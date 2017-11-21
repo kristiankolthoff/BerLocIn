@@ -11,10 +11,10 @@ import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.unima.webdataintegration.location.identityresolution.LocationBlockingKeyByType;
-import de.unima.webdataintegration.location.identityresolution.LocationDistanceComparator;
-import de.unima.webdataintegration.location.identityresolution.LocationNameComparator;
-import de.unima.webdataintegration.location.identityresolution.LocationPhoneComparator;
+import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByPostalCode;
+import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameLevenshteinComparator;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
 
@@ -22,29 +22,28 @@ public class LocationIdentityResolution {
 
 	public static void main(String[] args) throws Exception {
 		//Load all the data sets and prepare for identity resolution
-		DataSet<Location, Attribute> locationsYelp = new HashedDataSet<>();
-		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/locations_yelp_3.xml"), 
-				"locations/location", locationsYelp);
-		DataSet<Location, Attribute> locationsYelp2 = new HashedDataSet<>();
-		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/locations_yelp_small.xml"), 
-				"locations/location", locationsYelp2);
+		DataSet<Location, Attribute> prinzLocations = new HashedDataSet<>();
+		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/prinz_locations.xml"), 
+				"locations/location", prinzLocations);
+		DataSet<Location, Attribute> yelpLocations = new HashedDataSet<>();
+		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/yelp_locations.xml"), 
+				"locations/location", yelpLocations);
 		
 		//Create linear combination matching rule
-		LinearCombinationMatchingRule<Location, Attribute> matchingRule = new LinearCombinationMatchingRule<>(0.5);
-		matchingRule.addComparator(new LocationNameComparator(), 0.000000001);
-		matchingRule.addComparator(new LocationDistanceComparator(), 1.0);
-		matchingRule.addComparator(new LocationPhoneComparator(), 0.8);
+		LinearCombinationMatchingRule<Location, Attribute> matchingRule = new LinearCombinationMatchingRule<>(0.9);
+		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 1.0);
+//		matchingRule.addComparator(new LocationDistanceComparator(100), 1.0);
 		
 		StandardRecordBlocker<Location, Attribute> blocker = 
-				new StandardRecordBlocker<>(new LocationBlockingKeyByType());
+//				new StandardRecordBlocker<>(new LocationBlockingKeyByPostalCode());
+				new StandardRecordBlocker<>(new LocationBlockingKeyByRegion());
 		
-		MatchingEngine<Location, Attribute> matchingEngine =
-				new MatchingEngine<>();
+		MatchingEngine<Location, Attribute> matchingEngine = new MatchingEngine<>();
 		
 		Processable<Correspondence<Location,Attribute>> correspondences = 
-				matchingEngine.runIdentityResolution(locationsYelp, locationsYelp2, null, matchingRule, blocker);
+				matchingEngine.runIdentityResolution(prinzLocations, yelpLocations, null, matchingRule, blocker);
 		
-		new CSVCorrespondenceFormatter().writeCSV(new File("src/main/resources/data/results/yelp_dupl.csv"),
+		new CSVCorrespondenceFormatter().writeCSV(new File("src/main/resources/data/results/prinz_yelp_corres.csv"),
 				correspondences);
 	}
 }

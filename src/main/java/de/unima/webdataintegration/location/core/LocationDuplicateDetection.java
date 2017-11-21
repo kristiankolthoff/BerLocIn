@@ -12,7 +12,7 @@ import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.unima.webdataintegration.location.identityresolution.LocationNameComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameLevenshteinComparator;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
 
@@ -21,13 +21,13 @@ public class LocationDuplicateDetection {
 	public static void main(String[] args) throws Exception {
 		//Load all the data sets and prepare for identity resolution
 		DataSet<Location, Attribute> locationsYelp = new HashedDataSet<>();
-		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/locations_yelp_3.xml"), 
+		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/prinz_locations.xml"), 
 				"locations/location", locationsYelp);
 		
 		//Create linear combination matching rule
 		LinearCombinationMatchingRule<Location, Attribute> matchingRule = 
 				new LinearCombinationMatchingRule<>(0.5);
-		matchingRule.addComparator(new LocationNameComparator(), 0.8);
+		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 0.8);
 		
 		StandardRecordBlocker<Location, Attribute> blocker = 
 				new StandardRecordBlocker<>(new StaticBlockingKeyGenerator<>());
@@ -38,7 +38,7 @@ public class LocationDuplicateDetection {
 		Processable<Correspondence<Location,Attribute>> correspondences = 
 				matchingEngine.runDuplicateDetection(locationsYelp, matchingRule, blocker);
 		
-		new CSVCorrespondenceFormatter().writeCSV(new File("src/main/resources/data/results/yelp_dupl.csv"),
+		new CSVCorrespondenceFormatter().writeCSV(new File("src/main/resources/data/results/prinz_dupl.csv"),
 				correspondences);
 	}
 }

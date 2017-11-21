@@ -19,8 +19,6 @@ import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.unima.webdataintegration.location.fusion.fusers.LongitudeFuserAverage;
-import de.unima.webdataintegration.location.fusion.rules.LongitudeEvaluationRule;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
 
@@ -58,7 +56,7 @@ public class LocationDataFusion {
 		
 		//Specify data fusion strategy
 		DataFusionStrategy<Location, Attribute> strategy = new DataFusionStrategy<>(new LocationXMLReader());
-		strategy.addAttributeFuser(Location.LONGITUDE, new LongitudeFuserAverage(), new LongitudeEvaluationRule());
+//		strategy.addAttributeFuser(Location.LONGITUDE, new LongitudeFuserAverage(), new LongitudeEvaluationRule());
 		
 		DataFusionEngine<Location, Attribute> engine = new DataFusionEngine<>(strategy);
 		@SuppressWarnings("unused")

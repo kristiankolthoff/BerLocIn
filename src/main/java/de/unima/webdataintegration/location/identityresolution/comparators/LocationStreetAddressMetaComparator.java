@@ -60,5 +60,9 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 		}
 		return new String[] {name.trim(), number.trim()};
 	}
+	
+//	public String preprocess(String streetAddress) {
+//		return streetAddress.replaceAll(regex, replacement)
+//	}
 
 }

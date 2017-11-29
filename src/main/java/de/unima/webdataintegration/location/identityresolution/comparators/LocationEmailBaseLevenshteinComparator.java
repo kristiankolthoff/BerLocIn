@@ -1,6 +1,8 @@
 package de.unima.webdataintegration.location.identityresolution.comparators;
 
 
+import java.util.Objects;
+
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -23,19 +25,25 @@ public class LocationEmailBaseLevenshteinComparator implements Comparator<Locati
 		if(!record1.hasValue(Location.EMAIL) || !record2.hasValue(Location.EMAIL)) {
 			return -1;
 		}
-		//Normalize email1
-		String email1 = record1.getEmail().trim();
+		String[] components1 = preprocess(record1.getEmail());
+		String[] components2 = preprocess(record2.getEmail());
+		if(Objects.isNull(components1) || Objects.isNull(components2)) {
+			return similarity.calculate(record1.getEmail(), record2.getEmail());
+		}
+		double similarityUser = similarity.calculate(components1[0], components2[0]);
+		double similarityBase = similarity.calculate(components1[1], components2[1]);
+		//Combine both similarity scores by using f-beta-measure
+		return ((1 + Math.pow(1, 2)) * similarityUser * similarityBase) / 
+				((Math.pow(1, 2) *similarityUser) + similarityBase);
+	}
+	
+	public String[] preprocess(String email) {
+		String email1 = email.trim().toLowerCase();
 		String[] urlComponents1 = email1.split("@");
 		if(urlComponents1.length > 1) {
-			email1 = urlComponents1[urlComponents1.length-1];
+			return urlComponents1;
 		}
-		//Normalize email2
-		String email2 = record2.getEmail().trim();
-		String[] urlComponents2 = email2.split("@");
-		if(urlComponents2.length > 1) {
-			email2 = urlComponents2[urlComponents2.length-1];
-		}
-		return similarity.calculate(email1, email2);
+		return null;
 	}
 
 }

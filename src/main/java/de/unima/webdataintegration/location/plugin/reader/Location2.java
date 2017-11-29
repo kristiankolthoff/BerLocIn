@@ -3,7 +3,6 @@ package de.unima.webdataintegration.location.plugin.reader;
 import java.io.Serializable;
 
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-import de.unima.webdataintegration.location.model.District;
 import de.unima.webdataintegration.location.plugin.annotations.AttributeValue;
 import de.unima.webdataintegration.location.plugin.annotations.Ignore;
 import de.unima.webdataintegration.location.plugin.model.StandardAbstractRecord;
@@ -38,7 +37,6 @@ public class Location2 extends StandardAbstractRecord<Attribute> implements Seri
 	private String phone;
 	private String address;
 	private String price;
-	private District district;
 	
 	public Location2(String identifier, String provenance) {
 		super(identifier, provenance, Attribute.class);
@@ -174,15 +172,6 @@ public class Location2 extends StandardAbstractRecord<Attribute> implements Seri
 	}
 
 
-	public District getDistrict() {
-		return district;
-	}
-
-
-	public void setDistrict(District district) {
-		this.district = district;
-	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -193,7 +182,6 @@ public class Location2 extends StandardAbstractRecord<Attribute> implements Seri
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((district == null) ? 0 : district.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(latitude);

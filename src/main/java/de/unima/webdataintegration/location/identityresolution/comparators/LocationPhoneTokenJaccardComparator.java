@@ -22,16 +22,14 @@ public class LocationPhoneTokenJaccardComparator implements Comparator<Location,
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(Objects.isNull(record1.getContact()) || Objects.isNull(record2.getContact())) {
+		if(Objects.isNull(record1.getPhone()) || Objects.isNull(record2.getPhone())) {
 			return 0;
 		}
 		//Normalize phoneNumber1
-		String normPhone1 = Objects.nonNull(record1.getContact().getPhone()) ? 
-				record1.getContact().getPhone().replaceAll("\\+", "").trim() : "";
+		String normPhone1 = record1.getPhone().replaceAll("\\+", "").trim();
 		
 		//Normalize phoneNumber2
-		String normPhone2 = Objects.nonNull(record2.getContact().getPhone()) ? 
-				record2.getContact().getPhone().replaceAll("\\+", "").trim() : "";
+		String normPhone2 = record2.getPhone().replaceAll("\\+", "").trim();
 		return similarity.calculate(normPhone1, normPhone2);
 	}
 

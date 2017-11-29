@@ -23,15 +23,13 @@ public class LocationEmailJaccardComparator implements Comparator<Location, Attr
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(Objects.isNull(record1.getContact()) || Objects.isNull(record2.getContact())) {
+		if(Objects.isNull(record1.getEmail()) || Objects.isNull(record2.getEmail())) {
 			return 0;
 		}
 		//Normalize email1
-		String email1 = Objects.nonNull(record1.getContact().getEmail()) ? 
-				record1.getContact().getEmail().trim() : "";
+		String email1 = record1.getEmail().trim();
 		//Normalize email2
-		String email2 = Objects.nonNull(record2.getContact().getEmail()) ? 
-				record2.getContact().getEmail().trim() : "";
+		String email2 = record2.getEmail().trim();
 		return similarity.calculate(email1, email2);
 	}
 

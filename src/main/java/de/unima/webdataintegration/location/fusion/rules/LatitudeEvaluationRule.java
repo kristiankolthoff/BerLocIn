@@ -10,7 +10,7 @@ public class LatitudeEvaluationRule extends EvaluationRule<Location, Attribute>{
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getAddress().getLatitude() == record2.getAddress().getLatitude();
+		return record1.getLatitude() == record2.getLatitude();
 	}
 
 	@Override

@@ -23,15 +23,13 @@ public class LocationWebsiteLevenshteinComparator implements Comparator<Location
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(Objects.isNull(record1.getContact()) || Objects.isNull(record2.getContact())) {
+		if(Objects.isNull(record1.getWebsite()) || Objects.isNull(record2.getWebsite())) {
 			return 0;
 		}
 		//Normalize website1
-		String website1 = Objects.nonNull(record1.getContact().getWebsite()) ? 
-				record1.getContact().getWebsite().trim() : "";
+		String website1 = record1.getWebsite().trim();
 		//Normalize website2
-		String website2 = Objects.nonNull(record2.getContact().getWebsite()) ? 
-				record2.getContact().getWebsite().trim() : "";
+		String website2 = record2.getWebsite().trim();
 		return similarity.calculate(website1, website2);
 	}
 

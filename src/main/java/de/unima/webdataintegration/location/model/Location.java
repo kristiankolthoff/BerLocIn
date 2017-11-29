@@ -1,13 +1,19 @@
 package de.unima.webdataintegration.location.model;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
+import de.uni_mannheim.informatik.dws.winter.model.Pair;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
+import de.uni_mannheim.informatik.dws.winter.utils.StringUtils;
 
 public class Location extends AbstractRecord<Attribute> implements Serializable{
 
@@ -18,29 +24,40 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 
 	private String name;
 	private String type;
-	private Contact contact;
-	private Address address;
+	private String email;
+	private String website;
+	private String phone;
+	private String streetAddress;
+	private String postalCode;
+	private double latitude;
+	private double longitude;
 	private Set<OpeningHours> openingHours;
-	private Set<PopularHours> popularHours;
 	private double rating;
 	private int reviewCount;
 	private String price;
 	private List<String> photoUrls;
-	private District district;
+	private List<Review> reviews;
+	
+	public static final List<Pair<String, DayOfWeek>> WEEKDAYS = new ArrayList<>();
+	
+	static {
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("monday", DayOfWeek.MONDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("tuesday", DayOfWeek.TUESDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("wednesday", DayOfWeek.WEDNESDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("thursday", DayOfWeek.THURSDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("friday", DayOfWeek.FRIDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("saturday", DayOfWeek.SATURDAY));
+		WEEKDAYS.add(new Pair<String, DayOfWeek>("sunday", DayOfWeek.SUNDAY));
+	}
 	
 	public Location(String identifier, String provenance) {
 		super(identifier, provenance);
 		this.openingHours = new HashSet<>();
-		this.popularHours = new HashSet<>();
 		this.photoUrls = new ArrayList<>();
 	}
 	
 	public boolean addOpeningHours(OpeningHours openingHours) {
 		return this.openingHours.add(openingHours);
-	}
-	
-	public boolean addPopularHours(PopularHours popularHours) {
-		return this.popularHours.add(popularHours);
 	}
 	
 	public boolean addPhotoUrl(String url) {
@@ -98,29 +115,12 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 	}
 
 
-	public District getDistrict() {
-		return district;
+	public List<Review> getReviews() {
+		return reviews;
 	}
 
-
-	public void setDistrict(District district) {
-		this.district = district;
-	}
-
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public List<String> getPhotoUrls() {
@@ -139,59 +139,151 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 		this.openingHours = openingHours;
 	}
 
-	public Set<PopularHours> getPopularHours() {
-		return popularHours;
-	}
-
-	public void setPopularHours(Set<PopularHours> popularHours) {
-		this.popularHours = popularHours;
-	}
-
 	public static final Attribute NAME = new Attribute("name");
 	public static final Attribute TYPE = new Attribute("type");
-	public static final Attribute CONTACT = new Attribute("contact");
-	public static final Attribute ADDRESS = new Attribute("address");
+	public static final Attribute EMAIL = new Attribute("email");
+	public static final Attribute PHONE = new Attribute("phone");
+	public static final Attribute WEBSITE = new Attribute("website");
+	public static final Attribute STREET_ADDRESS = new Attribute("streetAddress");
+	public static final Attribute POSTAL_CODE = new Attribute("postalCode");
+	public static final Attribute LATITUDE = new Attribute("latitude");
+	public static final Attribute LONGITUDE = new Attribute("longitude");
 	public static final Attribute OPENING_HOURS = new Attribute("openingHours");
-	public static final Attribute POPULAR_HOURS = new Attribute("popularHours");
 	public static final Attribute RATING = new Attribute("rating");
 	public static final Attribute REVIEW_COUNT = new Attribute("reviewCount");
 	public static final Attribute PRICE = new Attribute("price");
 	public static final Attribute PHOTO_URLS = new Attribute("photoUrls");
-	public static final Attribute DISTRICT = new Attribute("district");
+	public static final Attribute REVIEWS = new Attribute("reviews");
 
 	@Override
 	public boolean hasValue(Attribute attribute) {
 		if(attribute == NAME) return getName() != null && !getName().isEmpty();
 		else if(attribute == TYPE) return getType() != null && !getType().isEmpty();
-		else if(attribute == CONTACT) return getContact() != null;
-		else if(attribute == ADDRESS) return getAddress() != null;
+		else if(attribute == EMAIL) return getEmail() != null && !getEmail().isEmpty();
+		else if(attribute == PHONE) return getPhone() != null && !getPhone().isEmpty();
+		else if(attribute == WEBSITE) return getWebsite() != null && !getWebsite().isEmpty();
+		else if(attribute == STREET_ADDRESS) return getStreetAddress() != null && !getStreetAddress().isEmpty();
+		else if(attribute == POSTAL_CODE) return getPostalCode() != null && !getPostalCode().isEmpty();
+		else if(attribute == LATITUDE) return getLatitude() != 0d;
+		else if(attribute == LONGITUDE) return getLongitude() != 0d;
 		else if(attribute == OPENING_HOURS) return !getOpeningHours().isEmpty();
-		else if(attribute == POPULAR_HOURS) return !getPopularHours().isEmpty();
 		else if(attribute == RATING) return getRating() != 0d;
 		else if(attribute == REVIEW_COUNT) return getReviewCount() != 0d;
 		else if(attribute == PRICE) return getPrice() != null && !getPrice().isEmpty();
 		else if(attribute == PHOTO_URLS) return !getPhotoUrls().isEmpty();
-		else if(attribute == DISTRICT) return getDistrict() != null;
+		else if(attribute == REVIEWS) return getReviews() != null && !getReviews().isEmpty();
 		return false;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
+	private Map<Attribute, Collection<String>> provenance = new HashMap<>();
+	private Collection<String> recordProvenance;
+
+	public void setRecordProvenance(Collection<String> provenance) {
+		recordProvenance = provenance;
+	}
+
+	public Collection<String> getRecordProvenance() {
+		return recordProvenance;
+	}
+
+	public void setAttributeProvenance(Attribute attribute,
+			Collection<String> provenance) {
+		this.provenance.put(attribute, provenance);
+	}
+
+	public Collection<String> getAttributeProvenance(Attribute attribute) {
+		return provenance.get(attribute);
+	}
+
+	public String getMergedAttributeProvenance(Attribute attribute) {
+		Collection<String> prov = provenance.get(attribute);
+
+		if (prov != null) {
+			return StringUtils.join(prov, "+");
+		} else {
+			return "";
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
-		result = prime * result + ((district == null) ? 0 : district.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(latitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(longitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((openingHours == null) ? 0 : openingHours.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((photoUrls == null) ? 0 : photoUrls.hashCode());
-		result = prime * result + ((popularHours == null) ? 0 : popularHours.hashCode());
+		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		long temp;
 		temp = Double.doubleToLongBits(rating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + reviewCount;
+		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((streetAddress == null) ? 0 : streetAddress.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((website == null) ? 0 : website.hashCode());
 		return result;
 	}
 
@@ -204,20 +296,14 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (address == null) {
-			if (other.address != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!address.equals(other.address))
+		} else if (!email.equals(other.email))
 			return false;
-		if (contact == null) {
-			if (other.contact != null)
-				return false;
-		} else if (!contact.equals(other.contact))
+		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
 			return false;
-		if (district == null) {
-			if (other.district != null)
-				return false;
-		} else if (!district.equals(other.district))
+		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -229,15 +315,20 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 				return false;
 		} else if (!openingHours.equals(other.openingHours))
 			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
 		if (photoUrls == null) {
 			if (other.photoUrls != null)
 				return false;
 		} else if (!photoUrls.equals(other.photoUrls))
 			return false;
-		if (popularHours == null) {
-			if (other.popularHours != null)
+		if (postalCode == null) {
+			if (other.postalCode != null)
 				return false;
-		} else if (!popularHours.equals(other.popularHours))
+		} else if (!postalCode.equals(other.postalCode))
 			return false;
 		if (price == null) {
 			if (other.price != null)
@@ -248,10 +339,25 @@ public class Location extends AbstractRecord<Attribute> implements Serializable{
 			return false;
 		if (reviewCount != other.reviewCount)
 			return false;
+		if (reviews == null) {
+			if (other.reviews != null)
+				return false;
+		} else if (!reviews.equals(other.reviews))
+			return false;
+		if (streetAddress == null) {
+			if (other.streetAddress != null)
+				return false;
+		} else if (!streetAddress.equals(other.streetAddress))
+			return false;
 		if (type == null) {
 			if (other.type != null)
 				return false;
 		} else if (!type.equals(other.type))
+			return false;
+		if (website == null) {
+			if (other.website != null)
+				return false;
+		} else if (!website.equals(other.website))
 			return false;
 		return true;
 	}

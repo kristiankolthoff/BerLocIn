@@ -10,7 +10,7 @@ public class PostalCodeEvaluationRule extends EvaluationRule<Location, Attribute
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getAddress().getPostalCode().equals(record2.getAddress().getPostalCode());
+		return record1.getPostalCode().equals(record2.getPostalCode());
 	}
 
 	@Override

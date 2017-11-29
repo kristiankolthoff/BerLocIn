@@ -8,17 +8,18 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.numeric.PercentageSimilarity;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.JaccardOnNGramsSimilarity;
+import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 import de.unima.webdataintegration.location.model.Location;
 
 public class LocationStreetAddressMetaComparator implements Comparator<Location, Attribute>{
 
 	private static final long serialVersionUID = 1L;
-	private JaccardOnNGramsSimilarity nameSimilarity;
+	private LevenshteinSimilarity nameSimilarity;
 	private PercentageSimilarity numberSimilarity;
 	private float beta;
 	
-	public LocationStreetAddressMetaComparator(int n, float beta) {
-		this.nameSimilarity = new JaccardOnNGramsSimilarity(n);
+	public LocationStreetAddressMetaComparator(float beta) {
+		this.nameSimilarity = new LevenshteinSimilarity();
 		this.numberSimilarity = new PercentageSimilarity(0.3);
 		this.beta = beta;
 	}
@@ -26,19 +27,17 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(Objects.isNull(record1.getAddress()) || Objects.isNull(record2.getAddress())) {
+		if(Objects.isNull(record1.getStreetAddress()) || Objects.isNull(record2.getStreetAddress())) {
 			return 0;
 		}
 		
 		//Normalize streetAddress1
-		String streetAddress1 = Objects.nonNull(record1.getAddress().getStreetAddress()) ? 
-				record1.getAddress().getStreetAddress().trim() : "";
+		String streetAddress1 = record1.getStreetAddress().trim();
 		String[] streetComponents1 = streetAddress1.split(" ");
 		String[] streetNumber1 = extractFeatures(streetComponents1);
 		
 		//Normalize streetAddress2
-		String streetAddress2 = Objects.nonNull(record2.getAddress().getStreetAddress()) ? 
-				record2.getAddress().getStreetAddress().trim() : "";
+		String streetAddress2 = record2.getStreetAddress().trim();
 		String[] streetComponents2 = streetAddress2.split(" ");
 		String[] streetNumber2 = extractFeatures(streetComponents2);
 		//Compute both separated similarity scores

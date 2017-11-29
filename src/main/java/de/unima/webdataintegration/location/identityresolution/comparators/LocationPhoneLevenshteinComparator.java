@@ -1,7 +1,5 @@
 package de.unima.webdataintegration.location.identityresolution.comparators;
 
-import java.util.Objects;
-
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -21,17 +19,17 @@ public class LocationPhoneLevenshteinComparator implements Comparator<Location, 
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(Objects.isNull(record1.getContact()) || Objects.isNull(record2.getContact())) {
-			return 0;
+		if(!record1.hasValue(Location.PHONE) || !record2.hasValue(Location.PHONE)) {
+			return -1;
 		}
-		//Normalize phoneNumber1
-		String normPhone1 = Objects.nonNull(record1.getContact().getPhone()) ? 
-				record1.getContact().getPhone().replaceAll("\\+", "").trim() : "";
-		
-		//Normalize phoneNumber2
-		String normPhone2 = Objects.nonNull(record2.getContact().getPhone()) ? 
-				record2.getContact().getPhone().replaceAll("\\+", "").trim() : "";
+		String normPhone1 = preprocess(record1.getPhone());
+		String normPhone2 = preprocess(record2.getPhone());
 		return similarity.calculate(normPhone1, normPhone2);
+	}
+	
+	public String preprocess(String name) {
+		return name.replaceAll("[^\\d]", "")
+				.trim();
 	}
 
 }

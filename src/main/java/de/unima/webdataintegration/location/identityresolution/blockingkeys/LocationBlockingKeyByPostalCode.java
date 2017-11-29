@@ -18,8 +18,8 @@ public class LocationBlockingKeyByPostalCode extends RecordBlockingKeyGenerator<
 	@Override
 	public void generateBlockingKeys(Location record, Processable<Correspondence<Attribute, Matchable>> correspondences,
 			DataIterator<Pair<String, Location>> resultCollector) {
-		if(Objects.nonNull(record.getAddress()) && Objects.nonNull(record.getAddress().getPostalCode())) {
-			resultCollector.next(new Pair<String, Location>(record.getAddress().getPostalCode(), record));
+		if(Objects.nonNull(record.getPostalCode())) {
+			resultCollector.next(new Pair<String, Location>(record.getPostalCode(), record));
 		} else {
 			resultCollector.next(new Pair<String, Location>("00000", record));
 		}

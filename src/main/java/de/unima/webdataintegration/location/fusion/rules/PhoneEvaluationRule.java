@@ -10,7 +10,7 @@ public class PhoneEvaluationRule extends EvaluationRule<Location, Attribute>{
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getContact().getPhone().equals(record2.getContact().getPhone());
+		return record1.getPhone().equals(record2.getPhone());
 	}
 
 	@Override

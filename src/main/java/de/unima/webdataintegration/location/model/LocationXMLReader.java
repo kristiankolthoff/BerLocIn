@@ -1,5 +1,13 @@
 package de.unima.webdataintegration.location.model;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import org.w3c.dom.Node;
@@ -7,6 +15,7 @@ import org.w3c.dom.NodeList;
 
 import de.uni_mannheim.informatik.dws.winter.model.DataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleFactory;
+import de.uni_mannheim.informatik.dws.winter.model.Pair;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
@@ -14,20 +23,34 @@ import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 public class LocationXMLReader extends XMLMatchableReader<Location, Attribute> implements
 				FusibleFactory<Location, Attribute>{
 
+	private DateTimeFormatter germanFormatter;
+	private int fromReadingIgnores;
+	private int toReadingIgnores;
+	
+	public LocationXMLReader() {
+		germanFormatter = DateTimeFormatter
+				.ofLocalizedTime(FormatStyle.SHORT)
+				.withLocale(Locale.GERMAN);
+	}
+
 	@Override
 	protected void initialiseDataset(DataSet<Location, Attribute> dataset) {
 		super.initialiseDataset(dataset);
 		dataset.addAttribute(Location.NAME);
 		dataset.addAttribute(Location.TYPE);
-		dataset.addAttribute(Location.CONTACT);
-		dataset.addAttribute(Location.ADDRESS);
+		dataset.addAttribute(Location.EMAIL);
+		dataset.addAttribute(Location.WEBSITE);
+		dataset.addAttribute(Location.PHONE);
+		dataset.addAttribute(Location.STREET_ADDRESS);
+		dataset.addAttribute(Location.POSTAL_CODE);
+		dataset.addAttribute(Location.LATITUDE);
+		dataset.addAttribute(Location.LONGITUDE);
 		dataset.addAttribute(Location.OPENING_HOURS);
-		dataset.addAttribute(Location.POPULAR_HOURS);
 		dataset.addAttribute(Location.RATING);
 		dataset.addAttribute(Location.REVIEW_COUNT);
 		dataset.addAttribute(Location.PRICE);
 		dataset.addAttribute(Location.PHOTO_URLS);
-		dataset.addAttribute(Location.DISTRICT);
+		dataset.addAttribute(Location.REVIEWS);
 	}
 
 	@Override
@@ -38,20 +61,42 @@ public class LocationXMLReader extends XMLMatchableReader<Location, Attribute> i
 		location.setType(getValueFromChildElement(node, "type"));
 		
 		//Parse contact information
-		location.setContact(getContact(node, provenanceInfo));
+		location.setEmail(getValueFromChildElement(node, "email"));
+		location.setWebsite(getValueFromChildElement(node, "website"));
+		location.setPhone(getValueFromChildElement(node, "phone"));
 		
 		//Parse address information
-		Address address = getAddress(node, provenanceInfo);
-		location.setAddress(address);
+		location.setStreetAddress(getValueFromChildElement(node, "streetAddress"));
+		location.setPostalCode(getValueFromChildElement(node, "postalCode"));
+		String latiude = getValueFromChildElement(node, "latitude");
+		double latiudeParsed = Objects.nonNull(latiude) ? Double.parseDouble(latiude) : 0d;
+		String longitude = getValueFromChildElement(node, "longitude");
+		double longitudeParsed = Objects.nonNull(longitude) ? Double.parseDouble(longitude) : 0d;
+		location.setLatitude(latiudeParsed);
+		location.setLongitude(longitudeParsed);
+		
+		//Parse opening hours
+		for (int i = 0; i < Location.WEEKDAYS.size(); i++) {
+			location.addOpeningHours(extractOpeningHours(node, Location.WEEKDAYS.get(i)));
+		}
+		
+		//Parse photo urls
+		List<String> photoUrls = extractPhotoUrls(node);
+		location.setPhotoUrls(photoUrls);
 		
 		//Parse rating and review_count
 		String rating = getValueFromChildElement(node, "rating");
 		double parsedRating = Objects.nonNull(rating) ? Double.parseDouble(rating) : 0d;
-		String reviewCount = getValueFromChildElement(node, "review_count");
+		String reviewCount = getValueFromChildElement(node, "reviewCount");
 		int parsedReviewCount = Objects.nonNull(reviewCount) ? Integer.parseInt(reviewCount) : 0;
 		location.setReviewCount(parsedReviewCount);
 		location.setRating(parsedRating);
 		location.setPrice(getValueFromChildElement(node, "price"));
+		
+		//Parse reviews
+		List<Review> reviews = getObjectListFromChildElement(node, "reviews",
+				"review", new ReviewXMLReader(), provenanceInfo);
+		location.setReviews(reviews);
 		return location;
 	}
 
@@ -64,59 +109,78 @@ public class LocationXMLReader extends XMLMatchableReader<Location, Attribute> i
 		}
 		//Create empty instances of class attributes
 		Location location = new Location(builder.toString(), "fused");
-		location.setContact(new Contact());
-		location.setAddress(new Address());
 		return location;
 	}
 	
-	public Contact getContact(Node node, String provenanceInfo) {
-		Contact contact = new Contact();
+	public List<String> extractPhotoUrls(Node node) {
+		List<String> photoUrls = new ArrayList<>();
 		NodeList children = node.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
-			Node tmpNode = children.item(i);
-			if(tmpNode.getNodeName().equals("contact")) {
-				NodeList contactElements = tmpNode.getChildNodes();
-				for (int j = 0; j < contactElements.getLength(); j++) {
-					Node element = contactElements.item(j);
-					if(element.getNodeName().equals("email")) contact.setEmail(element.getTextContent());
-					else if(element.getNodeName().equals("website")) contact.setWebsite(element.getTextContent());
-					else if(element.getNodeName().equals("phone")) contact.setPhone(element.getTextContent());
+			Node photoNode = children.item(i);
+			if(photoNode.getNodeName().equals("photos")) {
+				NodeList tmpNodeList = photoNode.getChildNodes();
+				for (int j = 0; j < tmpNodeList.getLength(); j++) {
+					Node urlNode = tmpNodeList.item(j);
+					if(urlNode.getNodeName().equals("url")) {
+						photoUrls.add(urlNode.getTextContent());
+					}
 				}
 			}
 		}
-		return (contact.getEmail() == null && contact.getWebsite() == null &&
-				contact.getPhone() == null) ? null : contact;
+		return photoUrls;
 	}
 	
-	public Address getAddress(Node node, String provenanceInfo) {
-		Address address = new Address();
+	
+	public OpeningHours extractOpeningHours(Node node, Pair<String, DayOfWeek> weekday) {
+		OpeningHours openingHours = new OpeningHours();
+		openingHours.setDayOfWeek(weekday.getSecond());
 		NodeList children = node.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
-			Node tmpNode = children.item(i);
-			if(tmpNode.getNodeName().equals("address")) {
-				NodeList contactElements = tmpNode.getChildNodes();
-				for (int j = 0; j < contactElements.getLength(); j++) {
-					Node element = contactElements.item(j);
-					if(element.getNodeName().equals("streetAddress")) address.setStreetAddress(element.getTextContent());
-					else if(element.getNodeName().equals("postalCode")) address.setPostalCode(element.getTextContent());
-					else if(element.getNodeName().equals("city")) address.setCity(element.getTextContent());
-					else if(element.getNodeName().equals("country")) address.setCountry(element.getTextContent());
-					else if(element.getNodeName().equals("latitude")) {
-						String latitude = element.getTextContent();
-						double parsedLatitude = Objects.nonNull(latitude) ? Double.parseDouble(latitude) : 0d;
-						address.setLatitude(parsedLatitude);
-					}
-					else if(element.getNodeName().equals("longitude")) {
-						String longitude = element.getTextContent();
-						double parsedLongitude = Objects.nonNull(longitude) ? Double.parseDouble(longitude) : 0d;
-						address.setLongitude(parsedLongitude);
+			Node ohNode = children.item(i);
+			if(ohNode.getNodeName().equals("openinghours")) {
+				NodeList tmpNodeList = ohNode.getChildNodes();
+				for (int j = 0; j < tmpNodeList.getLength(); j++) {
+					Node tmpNode = tmpNodeList.item(j);
+					if(tmpNode.getNodeName().equals(weekday.getFirst())) {
+						NodeList weekdayElements = tmpNode.getChildNodes();
+						for (int k = 0; k < weekdayElements.getLength(); k++) {
+							Node element = weekdayElements.item(k);
+							if(element.getNodeName().equals("from")) {
+								try {
+									openingHours.setFrom(LocalTime.parse(element.getTextContent(), germanFormatter));
+								} catch(DateTimeParseException ex) {
+									fromReadingIgnores += 1;
+								}
+							}
+							else if(element.getNodeName().equals("to")) {
+								try {
+									openingHours.setTo(LocalTime.parse(element.getTextContent(), germanFormatter));
+								} catch(DateTimeParseException ex) {
+									toReadingIgnores += 1;
+								}
+							}
+						}
 					}
 				}
 			}
 		}
-		return (address.getStreetAddress() == null && address.getPostalCode() == null &&
-				address.getCity() == null && address.getCountry() == null &&
-				address.getLatitude() == 0d && address.getLongitude() == 0d) ? null : address;
+		return openingHours;
+	}
+
+	public int getFromReadingIgnores() {
+		return fromReadingIgnores;
+	}
+
+	public void setFromReadingIgnores(int fromReadingIgnores) {
+		this.fromReadingIgnores = fromReadingIgnores;
+	}
+
+	public int getToReadingIgnores() {
+		return toReadingIgnores;
+	}
+
+	public void setToReadingIgnores(int toReadingIgnores) {
+		this.toReadingIgnores = toReadingIgnores;
 	}
 	
 }

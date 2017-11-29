@@ -1,0 +1,70 @@
+bars; Nightlife
+specialtyschools; Schools
+homeservices; Home services
+chinese; Restaurants
+german; Restaurants
+artsandcrafts; Art
+itservices; Services
+mediterranean; Restaurants
+japanese; Restaurants
+homeandgarden; Shopping
+sportswear; Shopping
+hair; Beauty
+farms; Entertainment
+fashion; Shopping
+tanning; Active life
+hairremoval; Beauty
+dentists; Health
+festivals; Entertainment
+education; School
+insurance; Financial services
+transport; Travel
+hotels; Hotels
+arts; Art
+c_and_mh; Health
+tastingclasses; Schools
+beautysvc; Beauty
+gourmet; Restaurants
+media; Mass media
+lawyers; Services
+parks; Active life
+localservices; Services
+health; Health
+eventservices; Services
+pets; Animal services
+wineries; Entertainment
+laundryservices; Services
+publicservicesgovt; Services
+massmedia; Mass media
+physicians; Health
+shopping; Shopping
+food; Restaurants
+auto; Automotive
+sportgoods; Shopping
+localflavor; Misc
+photographers; Services
+diving; Active life
+wholesalers; Services
+martialarts; Active life
+active; Active life
+hotelstravel; Hotels
+flowers; Shopping
+religiousorgs; Religious
+tours; Travel
+french; Restaurants
+autorepair; Automotive
+movietheaters; Entertainment
+airports; Travel
+petservices; Animal services
+musicinstrumentservices; Services
+cafes; Cafes
+travelservices; Travel
+museums; Art
+financialservices; Financial services
+mideastern; Restaurants
+nightlife; Nightlife
+fitness; Active life
+professional; Services
+nonprofit; Misc
+realestate; Real estate
+restaurants; Restaurants

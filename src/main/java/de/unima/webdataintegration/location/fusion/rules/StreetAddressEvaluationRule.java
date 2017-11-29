@@ -10,7 +10,7 @@ public class StreetAddressEvaluationRule extends EvaluationRule<Location, Attrib
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getAddress().getStreetAddress().equals(record2.getAddress().getStreetAddress());
+		return record1.getStreetAddress().equals(record2.getStreetAddress());
 	}
 
 	@Override

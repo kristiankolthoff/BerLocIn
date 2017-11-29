@@ -7,7 +7,6 @@ import de.uni_mannheim.informatik.dws.winter.model.Pair;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.DataIterator;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.unima.webdataintegration.location.model.Address;
 import de.unima.webdataintegration.location.model.Location;
 import javafx.geometry.Rectangle2D;
 
@@ -46,10 +45,10 @@ public class LocationBlockingKeyByArea extends RecordBlockingKeyGenerator<Locati
 	@Override
 	public void generateBlockingKeys(Location record, Processable<Correspondence<Attribute, Matchable>> correspondences,
 			DataIterator<Pair<String, Location>> resultCollector) {
-		if(record.hasValue(Location.ADDRESS) && record.getAddress().hasValue(Address.LATITUDE) 
-				&& record.getAddress().hasValue(Address.LONGITUDE)) {
-			double latitude = record.getAddress().getLatitude();
-			double longitude = record.getAddress().getLongitude();
+		if(record.hasValue(Location.LATITUDE) 
+				&& record.hasValue(Location.LONGITUDE)) {
+			double latitude = record.getLatitude();
+			double longitude = record.getLongitude();
 			//Width and height have to be adapted to multiplying constant
 			final Rectangle2D point = new Rectangle2D(latitude, longitude, 0.01, 0.01);
 			for (int i = 0; i < boxes[0].length; i++) {

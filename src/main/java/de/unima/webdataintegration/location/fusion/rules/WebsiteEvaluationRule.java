@@ -10,7 +10,7 @@ public class WebsiteEvaluationRule extends EvaluationRule<Location, Attribute>{
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getContact().getWebsite().equals(record2.getContact().getWebsite());
+		return record1.getWebsite().equals(record2.getWebsite());
 	}
 
 	@Override

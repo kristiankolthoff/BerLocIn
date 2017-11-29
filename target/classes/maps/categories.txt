@@ -1,0 +1,24 @@
+Active life
+Animal services
+Art
+Entertainment
+Automotive (cars)
+Beauty
+Cafes
+Financial services (Banks, Insurence)
+Grocery stores
+Health (doctors)
+Home services
+Hotels
+Mass media (TV, radio)
+Misc
+Nightlife (Bars, strip clubs)
+Real estate
+Religious
+Restaurants
+Schools
+Shopping
+Services (Funeral, Repair)
+Travel (Train stations, airports, airlines)
+
+

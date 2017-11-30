@@ -10,19 +10,21 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 import de.unima.webdataintegration.location.model.Location;
+import info.debatty.java.stringsimilarity.experimental.Sift4;
 
-public class LocationPhoneLevenshteinComparator implements Comparator<Location, Attribute>{
+public class LocationPhoneSift4Comparator implements Comparator<Location, Attribute>{
 
 	private static final long serialVersionUID = 3337073195037216870L;
 	private String defaultRegion;
 	private boolean useNationalNumberOnly;
 	private PhoneNumberUtil phoneUtil;
-	private LevenshteinSimilarity similarity;
+	private Sift4 similarity;
 	
 	public static final String REGION_DE = "DE";
 	
-	public LocationPhoneLevenshteinComparator(String defaultRegion, boolean useNationalNumberOnly) {
-		this.similarity = new LevenshteinSimilarity();
+	public LocationPhoneSift4Comparator(String defaultRegion, boolean useNationalNumberOnly) {
+		this.similarity = new Sift4();
+		this.similarity.setMaxOffset(3);
 		this.phoneUtil = PhoneNumberUtil.getInstance();
 		this.defaultRegion = defaultRegion;
 		this.useNationalNumberOnly = useNationalNumberOnly;
@@ -44,17 +46,23 @@ public class LocationPhoneLevenshteinComparator implements Comparator<Location, 
 				if(useNationalNumberOnly) {
 					String first = String.valueOf(phoneNumber1.getNationalNumber());
 					String second = String.valueOf(phoneNumber2.getNationalNumber());
-					return similarity.calculate(first, second);
+					return similarity(first, second);
 				} else {
 					String first = phoneUtil.formatInOriginalFormat(phoneNumber1, defaultRegion);
 					String second = phoneUtil.formatInOriginalFormat(phoneNumber2, defaultRegion);
-					return similarity.calculate(first, second);
+					return similarity(first, second);
 				}
 			}
 		} catch (NumberParseException e) {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public double similarity(String phone1, String phone2) {
+		double distance = similarity.distance(phone1, phone2);
+		double max = Math.max(phone1.length(), phone2.length());
+		return 1- distance / max;
 	}
 	
 

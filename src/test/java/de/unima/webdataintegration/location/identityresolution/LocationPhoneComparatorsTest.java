@@ -17,6 +17,7 @@ import de.unima.webdataintegration.location.identityresolution.comparators.Locat
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationEmailUserDomainLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneSift4Comparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressMetaComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteBaseLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteDamerauComparator;
@@ -84,22 +85,30 @@ public class LocationPhoneComparatorsTest {
 		LocationEmailUserDomainLevenshteinComparator compEmail = new LocationEmailUserDomainLevenshteinComparator();
 		LocationWebsiteDamerauComparator compWebsiteComplete = new LocationWebsiteDamerauComparator();
 		LocationWebsiteBaseLevenshteinComparator compWebsite = new LocationWebsiteBaseLevenshteinComparator();
+		LocationPhoneLevenshteinComparator compPhone = 
+				new LocationPhoneLevenshteinComparator(LocationPhoneLevenshteinComparator.REGION_DE, false);
+		LocationPhoneSift4Comparator compPhoneSift =
+				new LocationPhoneSift4Comparator(LocationPhoneLevenshteinComparator.REGION_DE, false);
 		Location record1 = new Location("", "");
 		record1.setLatitude(52.497092);
 		record1.setLongitude(13.322398);
 		record1.setEmail("infadmin@novus-mannheim.de");
 		record1.setWebsite("http://novus-mannheim.de/home");
+		record1.setPhone("+49 30 28776780");
 		Location record2 = new Location("", "");
 		record2.setLatitude(52.497179);
 		record2.setLongitude(13.322637);
 		record2.setEmail("info@novus-mannheim.de");
 		record2.setWebsite("https://www.novus-mannheim.de");
+		record2.setPhone("0/30/281467780");
 		System.out.println("Similarity lat,long: " + comp.compare(record1, record2, null) + ", " 
 					+ compArea.compare(record1, record2, null));
 		System.out.println("Sim Email : " + compEmail.compare(record1, record2, null) + ", " 
 				+ new LevenshteinSimilarity().calculate(record1.getEmail(), record2.getEmail()));
 		System.out.println("Sim website : " + compWebsiteComplete.compare(record1, record2, null) + ", "
 				+ compWebsite.compare(record1, record2, null));
+		System.out.println("Sim phone : " + compPhone.compare(record1, record2, null) + ", " +
+				compPhoneSift.compare(record1, record2, null));
 	}
 	
 	public String preprocess(String website) {

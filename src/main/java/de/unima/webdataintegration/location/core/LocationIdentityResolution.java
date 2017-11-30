@@ -52,7 +52,7 @@ public class LocationIdentityResolution {
 		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.9);
 		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 2.0);
 //		matchingRule.addComparator(new LocationDistanceComparator(300), 1.0);
-		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(), 2.0);
+//		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(), 2.0);
 //		matchingRule.addComparator(new LocationStreetAddressLevenshteinComparator(), 4.0);
 //		matchingRule.addComparator(new LocationPostalCodeComparator(), 1.0);
 //		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);

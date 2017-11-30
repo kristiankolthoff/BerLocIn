@@ -92,15 +92,20 @@ public class LocationPhoneComparatorsTest {
 		Location record1 = new Location("", "");
 		record1.setLatitude(52.497092);
 		record1.setLongitude(13.322398);
+		record1.setName("Cafe Anna Blume");
 		record1.setEmail("infadmin@novus-mannheim.de");
 		record1.setWebsite("http://novus-mannheim.de/home");
 		record1.setPhone("+49 30 28776780");
+		record1.setPostalCode("10997");
+		record1.setStreetAddress("Muskauerstrasse 1 10997 Berlin Germany");
 		Location record2 = new Location("", "");
 		record2.setLatitude(52.497179);
 		record2.setLongitude(13.322637);
 		record2.setEmail("info@novus-mannheim.de");
 		record2.setWebsite("https://www.novus-mannheim.de");
 		record2.setPhone("0/30/281467780");
+		record2.setStreetAddress("Muskauer Str. 1");
+		record2.setName("Anna Blume");
 		System.out.println("Similarity lat,long: " + comp.compare(record1, record2, null) + ", " 
 					+ compArea.compare(record1, record2, null));
 		System.out.println("Sim Email : " + compEmail.compare(record1, record2, null) + ", " 
@@ -109,7 +114,16 @@ public class LocationPhoneComparatorsTest {
 				+ compWebsite.compare(record1, record2, null));
 		System.out.println("Sim phone : " + compPhone.compare(record1, record2, null) + ", " +
 				compPhoneSift.compare(record1, record2, null));
+		LocationStreetAddressMetaComparator compStreet = new LocationStreetAddressMetaComparator(1);
+		System.out.println("Street : " + compStreet.compare(record1, record2, null));
+		record1.setPostalCode("10997");
+		record1.setStreetAddress("Im Ullsteinhaus Mariendorfer Damm 1");
+		record2.setStreetAddress("Mariendorfer Damm 1 Im Ullsteinhaus");
+		record2.setName("Anna Blume");
+		System.out.println("Street : " + compStreet.compare(record1, record2, null));
 	}
+	
+	
 	
 	public String preprocess(String website) {
 		try {

@@ -21,7 +21,6 @@ import de.unima.webdataintegration.location.identityresolution.blockingkeys.Loca
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByType;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
-import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPostalCodeComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressLevenshteinComparator;
@@ -50,7 +49,7 @@ public class LocationIdentityResolution {
 		
 		//Create linear combination matching rule
 		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.9);
-		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 2.0);
+//		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 2.0);
 //		matchingRule.addComparator(new LocationDistanceComparator(300), 1.0);
 //		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(), 2.0);
 //		matchingRule.addComparator(new LocationStreetAddressLevenshteinComparator(), 4.0);

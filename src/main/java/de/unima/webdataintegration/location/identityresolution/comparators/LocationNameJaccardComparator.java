@@ -1,7 +1,5 @@
 package de.unima.webdataintegration.location.identityresolution.comparators;
 
-import org.jsoup.Jsoup;
-
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -21,9 +19,20 @@ public class LocationNameJaccardComparator implements Comparator<Location, Attri
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		String name1 = Jsoup.parse(record1.getName()).text();
-		String name2 = Jsoup.parse(record2.getName()).text();
+		if(!record1.hasValue(Location.NAME) || !record2.hasValue(Location.NAME)) {
+			return -1;
+		}
+		String name1 = preprocess(record1.getName());
+		String name2 = preprocess(record2.getName());
 		return similarity.calculate(name1, name2);
 	}
 
+	public String preprocess(String name) {
+		return name.replaceAll("&amp;", "und")
+				.toLowerCase()
+				.replaceAll("cafe", "")
+				.replaceAll("restaurant", "")
+				.replaceAll("hotel", "")
+				.trim();
+	}
 }

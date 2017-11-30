@@ -8,12 +8,12 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.unima.webdataintegration.location.model.Location;
 import info.debatty.java.stringsimilarity.Damerau;
 
-public class LocationNameLevenshteinComparator implements Comparator<Location, Attribute>{
+public class LocationNameDamerauComparator implements Comparator<Location, Attribute>{
 
 	private static final long serialVersionUID = -7158641405132212257L;
 	private Damerau damerau;
 	
-	public LocationNameLevenshteinComparator() {
+	public LocationNameDamerauComparator() {
 		this.damerau = new Damerau();
 	}
 
@@ -35,9 +35,8 @@ public class LocationNameLevenshteinComparator implements Comparator<Location, A
 				.toLowerCase()
 				.replaceAll("cafe", "")
 				.replaceAll("restaurant", "")
-				.replaceAll("pizza", "")
 				.replaceAll("hotel", "")
-			.trim();
+				.trim();
 	}
 
 }

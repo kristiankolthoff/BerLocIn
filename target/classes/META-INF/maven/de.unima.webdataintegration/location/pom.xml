@@ -19,9 +19,13 @@
 		<id>releases</id>
 		<url>https://breda.informatik.uni-mannheim.de/nexus/content/repositories/releases/</url>
 	</repository>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
 </repositories>
 
-  <dependencies>
+  <dependencies>	
   <dependency>
     <groupId>info.debatty</groupId>
     <artifactId>java-string-similarity</artifactId>

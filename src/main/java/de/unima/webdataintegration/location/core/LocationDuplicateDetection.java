@@ -12,7 +12,6 @@ import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
-import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameLevenshteinComparator;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
 
@@ -27,7 +26,6 @@ public class LocationDuplicateDetection {
 		//Create linear combination matching rule
 		LinearCombinationMatchingRule<Location, Attribute> matchingRule = 
 				new LinearCombinationMatchingRule<>(0.5);
-		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 0.8);
 		
 		StandardRecordBlocker<Location, Attribute> blocker = 
 				new StandardRecordBlocker<>(new StaticBlockingKeyGenerator<>());

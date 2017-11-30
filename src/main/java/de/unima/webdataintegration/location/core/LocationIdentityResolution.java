@@ -24,6 +24,8 @@ import de.unima.webdataintegration.location.identityresolution.comparators.Locat
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationEmailUserDomainLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameDamerauComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneNameMetaComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneSift4Comparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPostalCodeComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressMetaComparator;
@@ -52,10 +54,11 @@ public class LocationIdentityResolution {
 		//Create linear combination matching rule
 		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.709);
 		matchingRule.addComparator(new LocationNameDamerauComparator(), 2.0);
-		matchingRule.addComparator(new LocationDistanceComparator(2000), 4.0);
-		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(
+//		matchingRule.addComparator(new LocationDistanceComparator(700), 2.5);
+		matchingRule.addComparator(new LocationPhoneSift4Comparator(
 				LocationPhoneLevenshteinComparator.REGION_DE, false), 2.0);
-//		matchingRule.addComparator(new LocationStreetAddressMetaComparator(1), 2.0);
+		matchingRule.addComparator(new LocationStreetAddressMetaComparator(1), 2.0);
+//		matchingRule.addComparator(new LocationPhoneNameMetaComparator(), 2);
 //		matchingRule.addComparator(new LocationPostalCodeComparator(), 1.0);
 //		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);
 //		matchingRule.addComparator(new LocationWebsiteBaseLevenshteinComparator(), 2);

@@ -53,7 +53,7 @@ public class LocationPhoneSift4Comparator implements Comparator<Location, Attrib
 				}
 			}
 		} catch (NumberParseException e) {
-			e.printStackTrace();
+			return -1;
 		}
 		return -1;
 	}

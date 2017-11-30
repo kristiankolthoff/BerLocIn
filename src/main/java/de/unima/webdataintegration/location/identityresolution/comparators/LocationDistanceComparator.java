@@ -28,17 +28,15 @@ public class LocationDistanceComparator implements Comparator<Location, Attribut
 	@Override
 	public double compare(Location record1, Location record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondence) {
-		if(record1.getLatitude() == 0d || record1.getLongitude() == 0d ||
-				record2.getLatitude() == 0d || record2.getLongitude() == 0d) {
-			return 0;
+		if(!record1.hasValue(Location.LATITUDE) || !record1.hasValue(Location.LONGITUDE)
+				|| !record2.hasValue(Location.LATITUDE) || !record2.hasValue(Location.LONGITUDE)) {
+			return -1;
 		}
 		GlobalPosition position1 = new GlobalPosition(record1.getLatitude(), record1.getLongitude(), 0d);
 		GlobalPosition position2 = new GlobalPosition(record2.getLatitude(), record2.getLongitude(), 0d);
 		double distance = geoCalculator.calculateGeodeticCurve(reference, position1, position2)
 							.getEllipsoidalDistance();
-//		double similarity = 1 - (distance / maximumDistance);
-//		return (similarity < 0d) ? 0d : similarity;
-		return (distance > maximumDistance) ? 1 : distance / maximumDistance;
+		return (distance > maximumDistance) ? 0 : (1 - distance / maximumDistance);
 	}
 
 }

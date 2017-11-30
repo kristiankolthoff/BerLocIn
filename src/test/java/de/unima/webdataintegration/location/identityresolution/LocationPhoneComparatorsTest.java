@@ -1,6 +1,8 @@
 package de.unima.webdataintegration.location.identityresolution;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -11,6 +13,9 @@ import org.junit.Test;
 
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceAreaComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationEmailUserDomainLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressMetaComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteBaseLevenshteinComparator;
@@ -72,5 +77,35 @@ public class LocationPhoneComparatorsTest {
 		double max = Math.max(s1.length(), s2.length());
 		double realSim = 1 - dist / max;
 		System.out.println(realSim);
+		System.out.println(preprocess("https://alkmaar.fc-bayern-de/home/de"));
+		LocationDistanceComparator comp = new LocationDistanceComparator(100);
+		LocationDistanceAreaComparator compArea = new LocationDistanceAreaComparator(10);
+		LocationEmailUserDomainLevenshteinComparator compEmail = new LocationEmailUserDomainLevenshteinComparator();
+		Location record1 = new Location("", "");
+		record1.setLatitude(52.497092);
+		record1.setLongitude(13.322398);
+		record1.setEmail("infadmin@novus-mannheim.de");
+		Location record2 = new Location("", "");
+		record2.setLatitude(52.497179);
+		record2.setLongitude(13.322637);
+		record2.setEmail("info@novus-mannheim.de");
+		System.out.println("Similarity lat,long: " + comp.compare(record1, record2, null) + ", " 
+					+ compArea.compare(record1, record2, null));
+		System.out.println("Sim Email : " + compEmail.compare(record1, record2, null) + ", " 
+				+ new LevenshteinSimilarity().calculate(record1.getEmail(), record2.getEmail()));
+	}
+	
+	public String preprocess(String website) {
+		try {
+			URI uri = new URI(website);
+			String hostname = uri.getHost();
+			if (hostname != null) {
+			      return hostname.startsWith("www.") ? hostname.substring(4) : hostname;
+			}
+			return hostname;
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

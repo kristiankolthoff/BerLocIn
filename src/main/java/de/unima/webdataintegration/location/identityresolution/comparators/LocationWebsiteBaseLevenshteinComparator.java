@@ -1,6 +1,10 @@
 package de.unima.webdataintegration.location.identityresolution.comparators;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
+
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -24,18 +28,29 @@ public class LocationWebsiteBaseLevenshteinComparator implements Comparator<Loca
 			return -1;
 		}
 		//Normalize website1
-		String website1 = record1.getWebsite().trim();
-		String[] urlComponents1 = website1.split("\\.");
-		if(urlComponents1.length > 2) {
-			website1 = urlComponents1[urlComponents1.length-2];
-		}
+		String website1 = record1.getWebsite().toLowerCase().trim();
+		String base1 = preprocess(website1);
 		//Normalize website2
-		String website2 = record2.getWebsite().trim();
-		String[] urlComponents2 = website2.split("\\.");
-		if(urlComponents2.length > 2) {
-			website2 = urlComponents2[urlComponents2.length-2];
+		String website2 = record2.getWebsite().toLowerCase().trim();
+		String base2 = preprocess(website2);
+		if(Objects.isNull(base1) || Objects.isNull(base2)) {
+			return similarity.calculate(website1, website2);
 		}
-		return similarity.calculate(website1, website2);
+		return similarity.calculate(base1, base2);
+	}
+	
+	public String preprocess(String website) {
+		try {
+			URI uri = new URI(website);
+			String hostname = uri.getHost();
+			if (hostname != null) {
+			      return hostname.startsWith("www.") ? hostname.substring(4) : hostname;
+			}
+			return hostname;
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

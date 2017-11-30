@@ -21,7 +21,6 @@ import de.unima.webdataintegration.location.identityresolution.blockingkeys.Loca
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByType;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
-import de.unima.webdataintegration.location.identityresolution.comparators.LocationEmailBaseLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPostalCodeComparator;
@@ -56,7 +55,7 @@ public class LocationIdentityResolution {
 		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(), 2.0);
 //		matchingRule.addComparator(new LocationStreetAddressLevenshteinComparator(), 4.0);
 //		matchingRule.addComparator(new LocationPostalCodeComparator(), 1.0);
-//		matchingRule.addComparator(new LocationEmailBaseLevenshteinComparator(), 2);
+//		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);
 //		matchingRule.addComparator(new LocationWebsiteBaseLevenshteinComparator(), 2);
 		
 		

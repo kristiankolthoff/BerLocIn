@@ -72,13 +72,11 @@ prinz_2069,tripadvisor_3813,true
 prinz_9149,tripadvisor_5508,true
 prinz_317,tripadvisor_352,true
 prinz_333,tripadvisor_6043,true
-prinz_4228,tripadvisor_4220,true
 prinz_1139,tripadvisor_223,true
 prinz_334,tripadvisor_977,true
 prinz_336,tripadvisor_240,true
 prinz_2339,tripadvisor_6625,true
 prinz_822,tripadvisor_420,true
-prinz_2914,tripadvisor_1590,true
 prinz_1067,tripadvisor_8134,true
 prinz_2973,tripadvisor_5965,true
 prinz_172,tripadvisor_6668,true
@@ -96,8 +94,11 @@ prinz_4932,tripadvisor_5349,false
 prinz_4932,tripadvisor_7901,false
 prinz_5098,tripadvisor_778,false
 prinz_6422,tripadvisor_1464,false
-prinz_5930,tripadvisor_7019,false
 prinz_3253,tripadvisor_207,false
 prinz_5930,tripadvisor_7019,true
 prinz_2074,tripadvisor_3965,false
 prinz_615,tripadvisor_6929,true
+prinz_10016,tripadvisor_8148,false
+prinz_10016,tripadvisor_8149,false
+prinz_10017,tripadvisor_8148,false
+prinz_10017,tripadvisor_8149,false

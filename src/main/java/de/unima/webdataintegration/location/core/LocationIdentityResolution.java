@@ -21,6 +21,8 @@ import de.unima.webdataintegration.location.identityresolution.blockingkeys.Loca
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByType;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationEmailUserDomainLevenshteinComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameDamerauComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPostalCodeComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressLevenshteinComparator;
@@ -39,7 +41,7 @@ public class LocationIdentityResolution {
 		readerFirst.loadFromXML(new File("src/main/resources/data/input/prinz_locations_with_hours.xml"), 
 				"locations/location", yelpLocations);
 		LocationXMLReader readerSecond = new LocationXMLReader();
-		readerSecond.loadFromXML(new File("src/main/resources/data/input/tripadvisor_locations.xml"), 
+		readerSecond.loadFromXML(new File("src/main/resources/data/input/tripadvisor_locations_final.xml"), 
 				"locations/location", prinzLocations);
 		System.out.println("DateTime ignores first dataset = from : " + readerFirst.getFromReadingIgnores() 
 							+ ", to : " + readerFirst.getToReadingIgnores());
@@ -48,11 +50,12 @@ public class LocationIdentityResolution {
 		
 		
 		//Create linear combination matching rule
-		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.9);
-//		matchingRule.addComparator(new LocationNameLevenshteinComparator(), 2.0);
-//		matchingRule.addComparator(new LocationDistanceComparator(300), 1.0);
-//		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(), 2.0);
-//		matchingRule.addComparator(new LocationStreetAddressLevenshteinComparator(), 4.0);
+		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.834);
+		matchingRule.addComparator(new LocationNameDamerauComparator(), 2.0);
+		matchingRule.addComparator(new LocationDistanceComparator(1000), 4.0);
+		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(
+				LocationPhoneLevenshteinComparator.REGION_DE, false), 2.0);
+//		matchingRule.addComparator(new LocationStreetAddressMetaComparator(1), 2.0);
 //		matchingRule.addComparator(new LocationPostalCodeComparator(), 1.0);
 //		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);
 //		matchingRule.addComparator(new LocationWebsiteBaseLevenshteinComparator(), 2);

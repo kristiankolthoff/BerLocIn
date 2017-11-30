@@ -52,7 +52,7 @@ public class LocationPhoneLevenshteinComparator implements Comparator<Location, 
 				}
 			}
 		} catch (NumberParseException e) {
-			e.printStackTrace();
+			return -1;
 		}
 		return -1;
 	}

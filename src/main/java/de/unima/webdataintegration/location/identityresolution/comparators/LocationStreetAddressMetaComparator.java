@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import de.uni_mannheim.informatik.dws.winter.matching.rules.Comparator;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
@@ -25,7 +26,7 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 	private static final long serialVersionUID = 1L;
 	private LevenshteinSimilarity nameSimilarity;
 	private TokenizingJaccardSimilarity nameTokenSimilarity;
-	private PercentageSimilarity numberSimilarity;
+	private LevenshteinSimilarity numberSimilarity;
 	private float beta;
 	private static final Pattern PATTERN = Pattern.compile("^([a-zäöüß\\s\\d.,-]+?)\\s*([\\d\\s]+(?:\\"
 			+ "s?[-|+/]\\s?\\d+)?\\s*[a-z]?)?\\s*(\\d{5})\\s*(.+)?$");
@@ -33,7 +34,7 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 	public LocationStreetAddressMetaComparator(float beta) {
 		this.nameSimilarity = new LevenshteinSimilarity();
 		this.nameTokenSimilarity = new TokenizingJaccardSimilarity();
-		this.numberSimilarity = new PercentageSimilarity(0.3);
+		this.numberSimilarity = new LevenshteinSimilarity();
 		this.beta = beta;
 	}
 
@@ -54,8 +55,7 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 			similarityName = Math.max(similarityNamePlain, similarityTokenName);
 		}
 		if(numberValid) {
-			similarityNumber = numberSimilarity.calculate(Double.valueOf(streetNumber1.getSecond()), 
-					Double.valueOf(streetNumber2.getSecond()));
+			similarityNumber = numberSimilarity.calculate(streetNumber1.getSecond(), streetNumber2.getSecond());
 		}
 		if(nameValid && numberValid) {
 			return ((1 + Math.pow(beta, 2)) * similarityName * similarityNumber) / 
@@ -86,7 +86,16 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 				.replaceAll(",", "");
 		List<String> nameTokens = getTokens(location.getName());
 		for(String token : nameTokens) {
+			token = token.replaceAll("\\+", "")
+						 .replaceAll("\\?", "")
+						 .replaceAll("\\*", "")
+						 .replaceAll("\\\\", "");
+			try {
+				
 			streetAddress = streetAddress.replaceAll(token, "");
+			} catch(PatternSyntaxException e) {
+				e.printStackTrace();
+			}
 		}
 		//Join back the postalcode for the pattern to work
 		streetAddress += " " + postalCode;

@@ -83,7 +83,12 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 				.replaceAll("germany", "")
 				.replaceAll("deutschland", "")
 				.replaceAll(postalCode, "")
-				.replaceAll(",", "");
+				.replaceAll(",", "")
+				.replaceAll("strasse", "str.")
+				.replaceAll("straße", "str.")
+				.replaceAll("str\\.", "str")
+				.replaceAll("platz", "pl.")
+				.replaceAll("pl\\.", "pl");
 		List<String> nameTokens = getTokens(location.getName());
 		for(String token : nameTokens) {
 			token = token.replaceAll("\\+", "")

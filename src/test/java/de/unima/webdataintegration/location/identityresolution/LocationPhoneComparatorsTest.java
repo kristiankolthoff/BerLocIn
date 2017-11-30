@@ -121,6 +121,11 @@ public class LocationPhoneComparatorsTest {
 		record2.setStreetAddress("Mariendorfer Damm 1 Im Ullsteinhaus");
 		record2.setName("Anna Blume");
 		System.out.println("Street : " + compStreet.compare(record1, record2, null));
+		record1.setPostalCode("10997");
+		record1.setStreetAddress("Mariannenstraße 43");
+		record2.setStreetAddress("Mariannenstr. 43");
+		record2.setName("Anna Blume");
+		System.out.println("Street : " + compStreet.compare(record1, record2, null));
 	}
 	
 	

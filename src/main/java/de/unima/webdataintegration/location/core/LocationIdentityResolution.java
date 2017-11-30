@@ -50,9 +50,9 @@ public class LocationIdentityResolution {
 		
 		
 		//Create linear combination matching rule
-		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.834);
+		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.709);
 		matchingRule.addComparator(new LocationNameDamerauComparator(), 2.0);
-		matchingRule.addComparator(new LocationDistanceComparator(1000), 4.0);
+		matchingRule.addComparator(new LocationDistanceComparator(2000), 4.0);
 		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(
 				LocationPhoneLevenshteinComparator.REGION_DE, false), 2.0);
 //		matchingRule.addComparator(new LocationStreetAddressMetaComparator(1), 2.0);

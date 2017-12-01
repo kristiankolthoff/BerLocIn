@@ -36,6 +36,7 @@ import de.unima.webdataintegration.location.fusion.fusers.RatingFuserNormalizedA
 import de.unima.webdataintegration.location.fusion.fusers.ReviewCountFuserSum;
 import de.unima.webdataintegration.location.fusion.fusers.ReviewsFuserUnion;
 import de.unima.webdataintegration.location.fusion.fusers.StreetAddressFuserVoting;
+import de.unima.webdataintegration.location.fusion.fusers.TypeConcatenationFuser;
 import de.unima.webdataintegration.location.fusion.fusers.WebsiteFuserVoting;
 import de.unima.webdataintegration.location.fusion.rules.EMailEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.LatitudeEvaluationRule;
@@ -50,6 +51,7 @@ import de.unima.webdataintegration.location.fusion.rules.RatingEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.ReviewCountEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.ReviewsEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.StreetAddressEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.TypeEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.WebsiteEvaluationRule;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLFormatter;
@@ -120,6 +122,7 @@ public class LocationDataFusion {
 		strategy.addAttributeFuser(Location.REVIEWS, new ReviewsFuserUnion(), new ReviewsEvaluationRule());
 		strategy.addAttributeFuser(Location.WEBSITE, new WebsiteFuserVoting(), new WebsiteEvaluationRule());
 		strategy.addAttributeFuser(Location.OPENING_HOURS, new OpeningHoursFuserIntersection(), new OpeningHoursEvaluationRule());
+		strategy.addAttributeFuser(Location.TYPE, new TypeConcatenationFuser(), new TypeEvaluationRule());
 		
 		//Run data fusion process
 		DataFusionEngine<Location, Attribute> engine = new DataFusionEngine<>(strategy);

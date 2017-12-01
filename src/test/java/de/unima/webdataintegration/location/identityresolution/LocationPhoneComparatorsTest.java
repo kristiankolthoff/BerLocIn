@@ -3,15 +3,20 @@ package de.unima.webdataintegration.location.identityresolution;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.FormatStyle;
 import java.util.Locale;
 
 import org.jsoup.Jsoup;
 import org.junit.Test;
 
+import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
+import de.unima.webdataintegration.location.fusion.rules.OpeningHoursEvaluationRule;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceAreaComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceComparator;
@@ -22,6 +27,7 @@ import de.unima.webdataintegration.location.identityresolution.comparators.Locat
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteBaseLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteDamerauComparator;
 import de.unima.webdataintegration.location.model.Location;
+import de.unima.webdataintegration.location.model.OpeningHours;
 import info.debatty.java.stringsimilarity.Damerau;
 
 public class LocationPhoneComparatorsTest {
@@ -128,7 +134,20 @@ public class LocationPhoneComparatorsTest {
 		System.out.println("Street : " + compStreet.compare(record1, record2, null));
 	}
 	
-	
+	@Test
+	public void testOpeningHoursEquality() {
+		DateTimeFormatter germanFormatter = DateTimeFormatter
+				.ofLocalizedTime(FormatStyle.SHORT)
+				.withLocale(Locale.GERMAN);
+		OpeningHoursEvaluationRule evaluationRule = new OpeningHoursEvaluationRule();
+		Location record1 = new Location("", "");
+		record1.addOpeningHours(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("17:00", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
+		record1.addOpeningHours(new OpeningHours(DayOfWeek.SATURDAY, LocalTime.parse("17:00", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
+		Location record2 = new Location("", "");
+		record2.addOpeningHours(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("17:00", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
+		record2.addOpeningHours(new OpeningHours(DayOfWeek.SATURDAY, LocalTime.parse("17:00", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
+		System.out.println(evaluationRule.isEqual(record1, record2, (Attribute)null));
+	}
 	
 	public String preprocess(String website) {
 		try {

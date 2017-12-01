@@ -1,0 +1,350 @@
+﻿<locations>
+
+
+<location>
+		<id>yelp_25365tripadvisor_5791</id>
+		<name>Tapas España</name>
+		<type>spanish</type>
+		<phone>+49308529422</phone>
+		<streetAddress>Rheinstr. 32</streetAddress>
+		<email>info@tapas-espana.de</email>
+		<postalCode>12161</postalCode>
+		<latitude>52.466529</latitude>
+		<longitude>13.329727</longitude>
+		<openinghours>
+			<monday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</monday>
+			<tuesday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</tuesday>
+			<wednesday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</wednesday>
+			<thursday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</thursday>
+			<friday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</friday>
+			<saturday>
+				<from>16:00</from>
+				<to>00:00</to>
+			</saturday>
+			<sunday>
+				<from>16:00</from>
+				<to>00:00</to>
+			</sunday>
+		</openinghours>
+		<rating>4</rating>
+		
+		<price>2.25</price>
+		<photos>
+			<url>https://s3-media1.fl.yelpcdn.com/bphoto/ION8A0aXLiZMwhsgxs8f5A/o.jpg</url>
+		</photos>
+
+	</location>
+
+
+<location>
+<id>yelp_18851tripadvisor_2467</id>
+		<name>Mondo Sardo</name>
+		<type>italian</type>
+		<phone>+493095590505</phone>
+		<streetAddress>Winsstr. 1</streetAddress>
+		<postalCode>10405</postalCode>
+		<latitude>52.53088</latitude>
+		<longitude>13.42319</longitude>
+		<openinghours>
+			<monday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</monday>
+			<tuesday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</tuesday>
+			<wednesday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</wednesday>
+			<thursday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</thursday>
+			<friday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</friday>
+			<saturday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</saturday>
+			<sunday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</sunday>
+		</openinghours>
+		<rating>4</rating>
+		
+		<price>2.25</price>
+		<photos>
+			<url>https://s3-media2.fl.yelpcdn.com/bphoto/2ymJwV21pazRY7Qb3QNYuQ/o.jpg</url>
+		</photos>
+	</location>
+
+
+
+
+	<location>
+		<id>yelp_26770tripadvisor_7026</id>
+		<name>Tex-Mex-Cantina</name>
+		<type>mexican</type>
+		<phone>+49302010417</phone>
+		<streetAddress>Georgenstr. 198</streetAddress>
+		<postalCode>10117</postalCode>
+		<email/>
+		<latitude>52.519797</latitude>
+		<longitude>13.3873</longitude>
+		<openinghours>
+			<monday>
+				<from>11:00</from>
+				<to>01:00</to>
+			</monday>
+			<tuesday>
+				<from>11:00</from>
+				<to>01:00</to>
+			</tuesday>
+			<wednesday>
+				<from>11:00</from>
+				<to>01:00</to>
+			</wednesday>
+			<thursday>
+				<from>11:00</from>
+				<to>01:00</to>
+			</thursday>
+			<friday>
+				<from>11:00</from>
+				<to>00:00</to>
+			</friday>
+			<saturday>
+				<from>11:00</from>
+				<to>01:00</to>
+			</saturday>
+			<sunday>
+				<from>11:00</from>
+				<to>00:00</to>
+			</sunday>
+		</openinghours>
+		<rating>4.5</rating>
+		<price>2.5</price>
+		<photos>
+			<url>https://s3-media4.fl.yelpcdn.com/bphoto/qXeMw_z6PUsJGixtJvVF9A/o.jpg</url>
+			<url>https://media-cdn.tripadvisor.com/media/photo-s/02/1c/60/57/blick-mit-innenraum.jpg</url>
+
+		</photos>
+	</location>
+
+
+	<location>
+		<id>yelp_20173tripadvisor_611</id>
+		<name>Fratelli La Bionda</name>
+		<type>italian</type>
+		<email>info@fratellilabionda.de</email>
+		<phone>+493063901770</phone>
+		<streetAddress>Bergmannstr. 31</streetAddress>
+		<postalCode>10961</postalCode>
+		<latitude>52.48866</latitude>
+		<longitude>13.39743</longitude>
+		<openinghours>
+			<monday>
+				<from>18:00</from>
+				<to>00:00</to>
+			</monday>
+			<tuesday>
+				<from>18:00</from>
+				<to>00:00</to>
+			</tuesday>
+			<wednesday>
+				<from>18:00</from>
+				<to>00:00</to>
+			</wednesday>
+			<thursday>
+				<from>18:00</from>
+				<to>00:00</to>
+			</thursday>
+			<friday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</friday>
+			<saturday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</saturday>
+			<sunday>
+				<from>17:00</from>
+				<to>00:00</to>
+			</sunday>
+		</openinghours>
+		<rating>4.5</rating>
+		<price>2.25</price>
+		<photos>
+			<url>https://s3-media3.fl.yelpcdn.com/bphoto/xwl0xP5ybGbEv1KIMMq_GQ/o.jpg</url>
+			<url>https://media-cdn.tripadvisor.com/media/photo-s/0d/73/8d/e4/photo0jpg.jpg</url>
+
+		</photos>
+	</location>
+
+
+<location>
+		<id>yelp_6516tripadvisor_6887</id>
+		<name>PeterPaul</name>
+		<type>german</type>
+		<phone>+493043773043</phone>
+		<streetAddress>Torstr. 99</streetAddress>
+		<postalCode>10119</postalCode>
+		<latitude>52.530099</latitude>
+		<email/>
+		<longitude>13.404359</longitude>
+		<openinghours>
+			<monday/>
+				<from>18:00</from>
+				<to>01:00</to>
+			<tuesday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</tuesday>
+			<wednesday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</wednesday>
+			<thursday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</thursday>
+			<friday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</friday>
+			<saturday>
+				<from>18:00</from>
+				<to>01:00</to>
+			</saturday>
+			<sunday/>
+		</openinghours>
+		<rating>4.5</rating>
+		<photos>
+			<url>https://media-cdn.tripadvisor.com/media/photo-s/0e/da/00/ab/peterpaul.jpg</url>
+
+			<url>https://s3-media3.fl.yelpcdn.com/bphoto/Ch_1BBw12YnLTVs8UByptg/o.jpg</url>
+		</photos>
+	</location>
+
+
+	<location>
+		<id>yelp_18594tripadvisor_300</id>
+		<name>Bombay Spice</name>
+		<type>indpak</type>
+		<phone>+493020833341</phone>
+		<streetAddress>Wilhelmstr. 79</streetAddress>
+		<postalCode>10117</postalCode>
+		<latitude>52.512141</latitude>
+		<longitude>13.383044</longitude>
+		<email/>
+		<openinghours>
+			<monday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</monday>
+			<tuesday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</tuesday>
+			<wednesday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</wednesday>
+			<thursday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</thursday>
+			<friday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</friday>
+			<saturday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</saturday>
+			<sunday>
+				<from>11:30</from>
+				<to>11:30</to>
+			</sunday>
+		</openinghours>
+		<rating>3.5</rating>
+		<price>2.25</price>
+		<photos>
+			<url>https://s3-media2.fl.yelpcdn.com/bphoto/eQiTwPINU5Llexdb8ampbw/o.jpg</url>
+			<url>https://media-cdn.tripadvisor.com/media/photo-s/0b/9f/5a/29/photo0jpg.jpg</url>
+
+		</photos>
+		</location>
+
+
+
+
+	<location>
+		<id>yelp_24564tripadvisor_948</id>
+		<name>Lucky Star</name>
+		<type>chinese</type>
+		<phone>+493056735514</phone>
+		<streetAddress>Friedrichstr.127</streetAddress>
+		<postalCode>10117</postalCode>
+		<latitude>52.525536</latitude>
+		<longitude>13.3868</longitude>
+		<email>luckystar.be@gmail.com</email>
+
+		<openinghours>
+			<monday>
+				<from>12:00</from>
+				<to>23:30</to>
+			</monday>
+			<tuesday>
+				<from>12:00</from>
+				<to>23:30</to>
+			</tuesday>
+			<wednesday>
+				<from>12:00</from>
+				<to>23:30</to>
+			</wednesday>
+			<thursday>
+				<from>12:00</from>
+				<to>23:30</to>
+			</thursday>
+			<friday>
+				<from>12:00</from>
+				<to>23:30</to>
+			</friday>
+			<saturday>
+				<from>17:00</from>
+				<to>23:30</to>
+			</saturday>
+			<sunday>
+				<from>17:00</from>
+				<to>23:30</to>
+			</sunday>
+		</openinghours>
+		<rating>4</rating>
+		<price>2.25</price>
+		<photos>
+			<url>https://media-cdn.tripadvisor.com/media/photo-s/05/c1/35/0f/lucky-star.jpg</url>
+
+			<url>https://s3-media1.fl.yelpcdn.com/bphoto/6wr_HT2aAnA6ID1a1X6GPg/o.jpg</url>
+		</photos>
+	</location>
+</locations>

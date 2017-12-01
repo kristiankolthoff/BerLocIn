@@ -54,7 +54,11 @@ public class LocationXMLFormatter extends XMLFormatter<Location>{
 			openingHours.appendChild(elemWeekday);
 		}
 		location.appendChild(openingHours);
+		try {
 		location.appendChild(createReviewsElement(record, doc));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		location.appendChild(createPhotosElement(record, doc));
 		return location;
 	}
@@ -62,7 +66,9 @@ public class LocationXMLFormatter extends XMLFormatter<Location>{
 	protected Element createPhotosElement(Location record, Document doc) {
 		Element root = doc.createElement("photos");
 		for(String photoUrl : record.getPhotoUrls()) {
-			root.appendChild(doc.createElement("url").appendChild(doc.createTextNode(photoUrl)));
+			Element url = doc.createElement("url");
+			url.appendChild(doc.createTextNode(photoUrl));
+			root.appendChild(url);
 		}
 		return root;
 	}

@@ -53,6 +53,15 @@ public class OpeningHours extends AbstractRecord<Attribute> implements Serializa
 	public boolean hasValue(Attribute attribute) {
 		return false;
 	}
+	
+	public static boolean equalFromAndTo(OpeningHours open1, OpeningHours open2) {
+		LocalTime from1 = open1.getFrom();
+		LocalTime from2 = open2.getFrom();
+		LocalTime to1 = open1.getTo();
+		LocalTime to2 = open2.getTo();
+		return from1.getHour() == from2.getHour() && from1.getMinute() == from2.getMinute() 
+				&& to1.getHour() == to2.getHour() && to1.getMinute() == to2.getMinute();
+	}
 
 	@Override
 	public int hashCode() {

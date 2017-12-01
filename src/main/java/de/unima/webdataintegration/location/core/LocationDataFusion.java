@@ -23,8 +23,32 @@ import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
 import de.uni_mannheim.informatik.dws.winter.model.RecordGroupFactory;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
+import de.unima.webdataintegration.location.fusion.fusers.EMailFuserVoting;
+import de.unima.webdataintegration.location.fusion.fusers.LatitudeFuserAverage;
 import de.unima.webdataintegration.location.fusion.fusers.LongitudeFuserAverage;
+import de.unima.webdataintegration.location.fusion.fusers.NameFuserShortestString;
+import de.unima.webdataintegration.location.fusion.fusers.OpeningHoursFuserIntersection;
+import de.unima.webdataintegration.location.fusion.fusers.PhoneFuserLongestString;
+import de.unima.webdataintegration.location.fusion.fusers.PhotosFuserUnion;
+import de.unima.webdataintegration.location.fusion.fusers.PostalCodeFuserMostRecent;
+import de.unima.webdataintegration.location.fusion.fusers.PriceFuserAverage;
+import de.unima.webdataintegration.location.fusion.fusers.RatingFuserNormalizedAverage;
+import de.unima.webdataintegration.location.fusion.fusers.ReviewCountFuserSum;
+import de.unima.webdataintegration.location.fusion.fusers.ReviewsFuserUnion;
+import de.unima.webdataintegration.location.fusion.fusers.StreetAddressFuserVoting;
+import de.unima.webdataintegration.location.fusion.rules.EMailEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.LatitudeEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.LongitudeEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.NameEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.OpeningHoursEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.PhoneEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.PhotosEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.PostalCodeEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.PriceEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.RatingEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.ReviewCountEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.ReviewsEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.StreetAddressEvaluationRule;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLFormatter;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
@@ -80,7 +104,19 @@ public class LocationDataFusion {
 		
 		//Specify data fusion strategy
 		DataFusionStrategy<Location, Attribute> strategy = new DataFusionStrategy<>(new LocationXMLReader());
+		strategy.addAttributeFuser(Location.NAME, new NameFuserShortestString(), new NameEvaluationRule());
+		strategy.addAttributeFuser(Location.PHONE, new PhoneFuserLongestString(), new PhoneEvaluationRule());
+		strategy.addAttributeFuser(Location.STREET_ADDRESS, new StreetAddressFuserVoting(), new StreetAddressEvaluationRule());
+		strategy.addAttributeFuser(Location.EMAIL, new EMailFuserVoting(), new EMailEvaluationRule());
+		strategy.addAttributeFuser(Location.POSTAL_CODE, new PostalCodeFuserMostRecent(), new PostalCodeEvaluationRule());
+		strategy.addAttributeFuser(Location.LATITUDE, new LatitudeFuserAverage(), new LatitudeEvaluationRule());
 		strategy.addAttributeFuser(Location.LONGITUDE, new LongitudeFuserAverage(), new LongitudeEvaluationRule());
+		strategy.addAttributeFuser(Location.RATING, new RatingFuserNormalizedAverage(), new RatingEvaluationRule());
+		strategy.addAttributeFuser(Location.REVIEW_COUNT, new ReviewCountFuserSum(), new ReviewCountEvaluationRule());
+		strategy.addAttributeFuser(Location.PRICE, new PriceFuserAverage(), new PriceEvaluationRule());
+		strategy.addAttributeFuser(Location.PHOTO_URLS, new PhotosFuserUnion(), new PhotosEvaluationRule());
+		strategy.addAttributeFuser(Location.REVIEWS, new ReviewsFuserUnion(), new ReviewsEvaluationRule());
+		strategy.addAttributeFuser(Location.OPENING_HOURS, new OpeningHoursFuserIntersection(), new OpeningHoursEvaluationRule());
 		
 		//Run data fusion process
 		DataFusionEngine<Location, Attribute> engine = new DataFusionEngine<>(strategy);

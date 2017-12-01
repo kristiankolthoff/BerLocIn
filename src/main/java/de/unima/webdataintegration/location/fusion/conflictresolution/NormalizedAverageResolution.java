@@ -13,21 +13,17 @@ public class NormalizedAverageResolution extends ConflictResolutionFunction<Doub
 	@Override
 	public FusedValue<Double, Location, Attribute> resolveConflict(
 			Collection<FusibleValue<Double, Location, Attribute>> values) {
-		if (values.size() == 0) {
-			return new FusedValue<>((Double) null);
-		} else {
-
 			double sum = 0.0;
 			double count = 0.0;
 
 			for (FusibleValue<Double, Location, Attribute> value : values) {
-				sum += value.getValue() * value.getRecord().getReviewCount();
+				int initialReview = value.getRecord().getReviewCount();
+				int reviewCount = (initialReview == 0) ? 1 : initialReview;
+				sum += value.getValue() * reviewCount;
 				count += value.getRecord().getReviewCount();
 			}
-
 			return new FusedValue<>(sum / count);
 
-		}
 	}
 
 }

@@ -10,7 +10,7 @@ public class ReviewCountEvaluationRule extends EvaluationRule<Location, Attribut
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
-		return record1.getReviewCount() == record2.getReviewCount();
+		return false;
 	}
 
 	@Override

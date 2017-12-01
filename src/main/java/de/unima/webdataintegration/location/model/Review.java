@@ -90,5 +90,59 @@ public class Review extends AbstractRecord<Attribute> implements Serializable{
 		else if(attribute == DATE) return getDate() != null;
 		return false;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((heading == null) ? 0 : heading.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(rating);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((userImage == null) ? 0 : userImage.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Review other = (Review) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (heading == null) {
+			if (other.heading != null)
+				return false;
+		} else if (!heading.equals(other.heading))
+			return false;
+		if (Double.doubleToLongBits(rating) != Double.doubleToLongBits(other.rating))
+			return false;
+		if (userImage == null) {
+			if (other.userImage != null)
+				return false;
+		} else if (!userImage.equals(other.userImage))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
+	}
 	
 }

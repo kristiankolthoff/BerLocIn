@@ -134,17 +134,21 @@ public class LocationDataFusion {
 		DataSet<Location, Attribute> goldstandard = new FusibleHashedDataSet<>();
 		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/goldstandard/fused.xml"), 
 				"locations/location", goldstandard);
-		
+		//Load fused dataset to initialize attribute schema
+		FusibleHashedDataSet<Location, Attribute> fusedFinal = new FusibleHashedDataSet<>();
+		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/fusion/fused.xml"), 
+				"locations/location", fusedFinal);
 		//Evaluate data fusion strategy
 		DataFusionEvaluator<Location, Attribute> evaluator = new DataFusionEvaluator<>(strategy, 
 				new RecordGroupFactory<>());
 		evaluator.setVerbose(true);
-		double accuarcy = evaluator.evaluate(fusedDataSet, goldstandard, null);
+		try {
+		double accuarcy = evaluator.evaluate(fusedFinal, goldstandard, null);
 		System.out.println("Accuarcy : " + accuarcy);
 		System.out.println("Density of fused dataset");
-		FusibleHashedDataSet<Location, Attribute> fusedFinal = new FusibleHashedDataSet<>();
-		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/fusion/fused.xml"), 
-				"locations/location", fusedFinal);
 		fusedFinal.printDataSetDensityReport();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

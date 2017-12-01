@@ -27,6 +27,7 @@ public class LocationXMLFormatter extends XMLFormatter<Location>{
 	@Override
 	public Element createElementFromRecord(Location record, Document doc) {
 		Element location = doc.createElement("location");
+		location.appendChild(createTextElement("id", record.getIdentifier(), doc));
 		location.appendChild(createTextElement("name", record.getName(), doc));
 		location.appendChild(createTextElement("type", record.getType(), doc));
 		location.appendChild(createTextElement("email", record.getEmail(), doc));

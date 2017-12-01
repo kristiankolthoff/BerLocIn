@@ -14,6 +14,7 @@ public class ReviewsEvaluationRule extends EvaluationRule<Location, Attribute>{
 
 	@Override
 	public boolean isEqual(Location record1, Location record2, Attribute schemaElement) {
+		if(!record1.hasValue(Location.REVIEWS) || !record2.hasValue(Location.REVIEWS)) return false;
 		Set<Review> reviews1 = new HashSet<>();
 		for (Review review : record1.getReviews()) {
 			reviews1.add(review);

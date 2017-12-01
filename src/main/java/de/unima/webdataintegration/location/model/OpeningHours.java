@@ -3,6 +3,7 @@ package de.unima.webdataintegration.location.model;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Objects;
 
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
@@ -55,10 +56,12 @@ public class OpeningHours extends AbstractRecord<Attribute> implements Serializa
 	}
 	
 	public static boolean equalFromAndTo(OpeningHours open1, OpeningHours open2) {
+		if(Objects.isNull(open1) || Objects.isNull(open2)) return false;
 		LocalTime from1 = open1.getFrom();
 		LocalTime from2 = open2.getFrom();
 		LocalTime to1 = open1.getTo();
 		LocalTime to2 = open2.getTo();
+		if(Objects.isNull(from1) || Objects.isNull(from2) || Objects.isNull(to1) || Objects.isNull(to2)) return false;
 		return from1.getHour() == from2.getHour() && from1.getMinute() == from2.getMinute() 
 				&& to1.getHour() == to2.getHour() && to1.getMinute() == to2.getMinute();
 	}

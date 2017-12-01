@@ -2,7 +2,7 @@
 
 
 <location>
-		<id>yelp_25365tripadvisor_5791</id>
+		<id>yelp_25365_tripadvisor_5791_</id>
 		<name>Tapas España</name>
 		<type>spanish</type>
 		<phone>+49308529422</phone>
@@ -52,7 +52,7 @@
 
 
 <location>
-<id>yelp_18851tripadvisor_2467</id>
+<id>yelp_18851_tripadvisor_2467_</id>
 		<name>Mondo Sardo</name>
 		<type>italian</type>
 		<phone>+493095590505</phone>
@@ -102,7 +102,7 @@
 
 
 	<location>
-		<id>yelp_26770tripadvisor_7026</id>
+		<id>tripadvisor_7026_yelp_26770_</id>
 		<name>Tex-Mex-Cantina</name>
 		<type>mexican</type>
 		<phone>+49302010417</phone>
@@ -152,7 +152,7 @@
 
 
 	<location>
-		<id>yelp_20173tripadvisor_611</id>
+		<id>yelp_20173_prinz_314_tripadvisor_611_</id>
 		<name>Fratelli La Bionda</name>
 		<type>italian</type>
 		<email>info@fratellilabionda.de</email>
@@ -202,7 +202,7 @@
 
 
 <location>
-		<id>yelp_6516tripadvisor_6887</id>
+		<id>yelp_6516_tripadvisor_6887_</id>
 		<name>PeterPaul</name>
 		<type>german</type>
 		<phone>+493043773043</phone>
@@ -247,7 +247,7 @@
 
 
 	<location>
-		<id>yelp_18594tripadvisor_300</id>
+		<id>yelp_18594_tripadvisor_300_</id>
 		<name>Bombay Spice</name>
 		<type>indpak</type>
 		<phone>+493020833341</phone>
@@ -299,7 +299,7 @@
 
 
 	<location>
-		<id>yelp_24564tripadvisor_948</id>
+		<id>tripadvisor_948_yelp_24564_</id>
 		<name>Lucky Star</name>
 		<type>chinese</type>
 		<phone>+493056735514</phone>

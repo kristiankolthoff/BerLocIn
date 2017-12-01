@@ -27,7 +27,13 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.FeatureVectorDat
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Record;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-
+/**
+ * @author kkolthof
+ * 
+ * Adaption of orignal code from Oliver Lehmberg. This LinearCombMatchingRule
+ * takes comparators returning a negative value out of the equation and only
+ * focuses takes available attributes into account.
+ */
 public class LinearCombMatchingRule<RecordType extends Matchable, SchemaElementType extends Matchable>
 		extends FilteringMatchingRule<RecordType, SchemaElementType>
 		implements LearnableMatchingRule<RecordType, SchemaElementType>

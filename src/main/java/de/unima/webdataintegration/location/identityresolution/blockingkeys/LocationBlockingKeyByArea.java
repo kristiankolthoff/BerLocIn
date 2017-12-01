@@ -8,37 +8,43 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.processing.DataIterator;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.unima.webdataintegration.location.model.Location;
-import javafx.geometry.Rectangle2D;
 
 public class LocationBlockingKeyByArea extends RecordBlockingKeyGenerator<Location, Attribute>{
 
 	private static final long serialVersionUID = 1L;
-	private Rectangle2D boundingBox;
 	private int stepsX;
 	private int stepsY;
-	private Rectangle2D[][] boxes;
+	private double latitudeLeft;
+	private double longitudeLeft;
+	private double latitudeRight;
+	private double longitudeRight;
+	private double[] xValues;
+	private double[] yValues;
 
-	public LocationBlockingKeyByArea(float latitudeLeft, float longitudeLeft, 
-			float latitudeRight, float longitudeRight, int stepsX, int stepsY) {
+	public LocationBlockingKeyByArea(double latitudeLeft, double longitudeLeft, 
+			double latitudeRight, double longitudeRight, int stepsX, int stepsY) {
 		this.stepsX = stepsX;
 		this.stepsY = stepsY;
-		//Since differences in coordinates are very small in city radius, multiply values with constant value
-		this.boundingBox = new Rectangle2D(latitudeLeft, longitudeLeft, 
-				latitudeRight-latitudeLeft, longitudeRight-longitudeLeft);
-		this.boxes = computeBoxes(boundingBox, this.stepsX, this.stepsY);
+		this.latitudeLeft = latitudeLeft;
+		this.longitudeLeft = longitudeLeft;
+		this.latitudeRight = latitudeRight;
+		this.longitudeRight = longitudeRight;
+		computeBoxes(latitudeLeft, longitudeLeft, latitudeRight, longitudeRight, this.stepsX, this.stepsY);
 	}
 
 
-	private Rectangle2D[][] computeBoxes(Rectangle2D boundingBox, int stepsX, int stepsY) {
-		Rectangle2D[][] boxes = new Rectangle2D[stepsX][stepsY];
-		double incX = boundingBox.getWidth() / stepsX;
-		double incY = boundingBox.getHeight() / stepsY;
-		for (int i = 0; i < boxes.length; i++) {
-			for (int j = 0; j < boxes.length; j++) {
-				boxes[j][i] = new Rectangle2D(incX * j, incY * i, incX, incY);
-			}
+	private void computeBoxes(double latitudeLeft, double longitudeLeft, 
+			double latitudeRight, double longitudeRight, int stepsX, int stepsY) {
+		xValues = new double[stepsX + 1];
+		yValues = new double[stepsY + 1];
+		double incX = (latitudeLeft - latitudeRight) / stepsX;
+		double incY = (longitudeRight - longitudeLeft) / stepsY;
+		for (int i = 0; i < xValues.length; i++) {
+			xValues[i] = latitudeLeft - incX * i;
 		}
-		return boxes;
+		for (int i = 0; i < yValues.length; i++) {
+			yValues[i] = longitudeLeft + incY * i;
+		}
 	}
 
 
@@ -49,19 +55,85 @@ public class LocationBlockingKeyByArea extends RecordBlockingKeyGenerator<Locati
 				&& record.hasValue(Location.LONGITUDE)) {
 			double latitude = record.getLatitude();
 			double longitude = record.getLongitude();
-			//Width and height have to be adapted to multiplying constant
-			final Rectangle2D point = new Rectangle2D(latitude, longitude, 0.01, 0.01);
-			for (int i = 0; i < boxes[0].length; i++) {
-				for (int j = 0; j < boxes.length; j++) {
-					if(boxes[j][i].intersects(point)) {
-						resultCollector.next(new Pair<String, Location>(j + " " + i, record));
-						return;
-					}
-				}
-			}
+			resultCollector.next(new Pair<String, Location>(generateKeyByIndexes(latitude, longitude), record));
 		} else {
 			resultCollector.next(new Pair<String, Location>("static", record));
 		}
 	}
+	
+	public String generateKeyByIndexes(double latitude, double longitude) {
+		int indexX = 0, indexY = 0;
+		for (int i = 0; i < xValues.length; i++) {
+			if(latitude > xValues[i]) {
+				indexX = i - 1;
+			}
+		}
+		for (int i = 0; i < yValues.length; i++) {
+			if(longitude < yValues[i]) {
+				indexY = i - 1;
+			}
+		}
+		return String.valueOf(indexX) + "-" + String.valueOf(indexY);
+	}
 
+
+	public int getStepsX() {
+		return stepsX;
+	}
+
+
+	public void setStepsX(int stepsX) {
+		this.stepsX = stepsX;
+	}
+
+
+	public int getStepsY() {
+		return stepsY;
+	}
+
+
+	public void setStepsY(int stepsY) {
+		this.stepsY = stepsY;
+	}
+
+
+	public double getLatitudeLeft() {
+		return latitudeLeft;
+	}
+
+
+	public void setLatitudeLeft(double latitudeLeft) {
+		this.latitudeLeft = latitudeLeft;
+	}
+
+
+	public double getLongitudeLeft() {
+		return longitudeLeft;
+	}
+
+
+	public void setLongitudeLeft(double longitudeLeft) {
+		this.longitudeLeft = longitudeLeft;
+	}
+
+
+	public double getLatitudeRight() {
+		return latitudeRight;
+	}
+
+
+	public void setLatitudeRight(double latitudeRight) {
+		this.latitudeRight = latitudeRight;
+	}
+
+
+	public double getLongitudeRight() {
+		return longitudeRight;
+	}
+
+
+	public void setLongitudeRight(double longitudeRight) {
+		this.longitudeRight = longitudeRight;
+	}
+	
 }

@@ -48,8 +48,12 @@ public class LocationBlockingKeyByType extends RecordBlockingKeyGenerator<Locati
 					mapYelp.get(record.getType()) : "misc";
 			resultCollector.next(new Pair<String, Location>(yelpKey, record));
 		} else if(record.getProvenance().contains("prinz")) {
+			try {
 			String prinzKey = prinzLookup(record.getType());
 			resultCollector.next(new Pair<String, Location>(prinzKey, record));
+			}catch(NullPointerException e) {
+				System.out.println();
+			}
 		}
 		resultCollector.next(new Pair<>(record.getType(), record));
 	}

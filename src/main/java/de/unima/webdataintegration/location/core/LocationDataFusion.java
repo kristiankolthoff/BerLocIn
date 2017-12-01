@@ -26,6 +26,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.unima.webdataintegration.location.fusion.fusers.EMailFuserVoting;
 import de.unima.webdataintegration.location.fusion.fusers.LatitudeFuserAverage;
 import de.unima.webdataintegration.location.fusion.fusers.LongitudeFuserAverage;
+import de.unima.webdataintegration.location.fusion.fusers.LatitudeFuserMedian;
+import de.unima.webdataintegration.location.fusion.fusers.LongitudeFuserMedian;
 import de.unima.webdataintegration.location.fusion.fusers.NameFuserShortestString;
 import de.unima.webdataintegration.location.fusion.fusers.OpeningHoursFuserIntersection;
 import de.unima.webdataintegration.location.fusion.fusers.PhoneFuserLongestString;

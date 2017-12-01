@@ -127,6 +127,7 @@ public class LocationDataFusion {
 		//Run data fusion process
 		DataFusionEngine<Location, Attribute> engine = new DataFusionEngine<>(strategy);
 		FusibleDataSet<Location, Attribute> fusedDataSet = engine.run(correspondences, null);
+		engine.printClusterConsistencyReport(correspondences, null);
 		
 		new LocationXMLFormatter().writeXML(new File("src/main/resources/data/fusion/fused.xml"), fusedDataSet);
 		

@@ -20,20 +20,22 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 
-public class LocationStreetAddressMetaComparator implements Comparator<Location, Attribute>{
+public class LocationStreetAddressDistMetaComparator implements Comparator<Location, Attribute>{
 
 	private static final long serialVersionUID = 1L;
 	private LevenshteinSimilarity nameSimilarity;
 	private TokenizingJaccardSimilarity nameTokenSimilarity;
 	private LevenshteinSimilarity numberSimilarity;
+	private LocationDistanceComparator distanceSimilarity;
 	private float beta;
 	private static final Pattern PATTERN = Pattern.compile("^([a-zäöüß\\s\\d.,-]+?)\\s*([\\d\\s]+(?:\\"
 			+ "s?[-|+/]\\s?\\d+)?\\s*[a-z]?)?\\s*(\\d{5})\\s*(.+)?$");
 	
-	public LocationStreetAddressMetaComparator(float beta) {
+	public LocationStreetAddressDistMetaComparator(float beta) {
 		this.nameSimilarity = new LevenshteinSimilarity();
 		this.nameTokenSimilarity = new TokenizingJaccardSimilarity();
 		this.numberSimilarity = new LevenshteinSimilarity();
+		this.distanceSimilarity = new LocationDistanceComparator(300);
 		this.beta = beta;
 	}
 
@@ -43,6 +45,7 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 		if(!record1.hasValue(Location.STREET_ADDRESS) || !record2.hasValue(Location.STREET_ADDRESS)) {
 			return -1;
 		}
+		double gpsSimilarity = distanceSimilarity.compare(record1, record2, schemaCorrespondence);
 		Pair<String, String> streetNumber1 = preprocss(record1);
 		Pair<String, String> streetNumber2 = preprocss(record2);
 		boolean nameValid = !Objects.isNull(streetNumber1.getFirst()) && !Objects.isNull(streetNumber2.getFirst());
@@ -57,12 +60,13 @@ public class LocationStreetAddressMetaComparator implements Comparator<Location,
 			similarityNumber = numberSimilarity.calculate(streetNumber1.getSecond(), streetNumber2.getSecond());
 		}
 		if(nameValid && numberValid) {
-			return ((1 + Math.pow(beta, 2)) * similarityName * similarityNumber) / 
+			double weightedSimilarity = ((1 + Math.pow(beta, 2)) * similarityName * similarityNumber) / 
 					((Math.pow(beta, 2) *similarityName) + similarityNumber);
+			return Math.max(weightedSimilarity, gpsSimilarity);
 		} else if(nameValid && !numberValid) {
-			return similarityName;
+			return Math.max(similarityName, gpsSimilarity);
 		} else if(!nameValid && numberValid) {
-			return similarityNumber;
+			return Math.max(similarityNumber, gpsSimilarity);
 		} else {
 			return -1;
 		}

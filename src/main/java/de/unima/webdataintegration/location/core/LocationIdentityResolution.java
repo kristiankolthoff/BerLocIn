@@ -25,7 +25,9 @@ import de.unima.webdataintegration.location.identityresolution.comparators.Locat
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationNameDamerauComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneNameMetaComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationPhoneSift4Comparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationPostalCodeComparator;
+import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressDistMetaComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressLevenshteinComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationStreetAddressMetaComparator;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationWebsiteBaseLevenshteinComparator;
@@ -39,10 +41,10 @@ public class LocationIdentityResolution {
 		DataSet<Location, Attribute> prinzLocations = new HashedDataSet<>();
 		DataSet<Location, Attribute> yelpLocations = new HashedDataSet<>();
 		LocationXMLReader readerFirst = new LocationXMLReader();
-		readerFirst.loadFromXML(new File("src/main/resources/data/input/prinz_locations_with_hours.xml"), 
+		readerFirst.loadFromXML(new File("src/main/resources/data/input/yelp_locations.xml"), 
 				"locations/location", yelpLocations);
 		LocationXMLReader readerSecond = new LocationXMLReader();
-		readerSecond.loadFromXML(new File("src/main/resources/data/input/tripadvisor_locations_final.xml"), 
+		readerSecond.loadFromXML(new File("src/main/resources/data/input/tripadvisor_locations.xml"), 
 				"locations/location", prinzLocations);
 		System.out.println("DateTime ignores first dataset = from : " + readerFirst.getFromReadingIgnores() 
 							+ ", to : " + readerFirst.getToReadingIgnores());
@@ -53,13 +55,16 @@ public class LocationIdentityResolution {
 		//Create linear combination matching rule
 		LinearCombMatchingRule<Location, Attribute> matchingRule = new LinearCombMatchingRule<>(0.709);
 		matchingRule.addComparator(new LocationNameDamerauComparator(), 2.0);
-//		matchingRule.addComparator(new LocationDistanceComparator(700), 2.5);
-		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(
+//		matchingRule.addComparator(new LocationDistanceComparator(300), 2.0);
+//		matchingRule.addComparator(new LocationPhoneLevenshteinComparator(
+//				LocationPhoneLevenshteinComparator.REGION_DE, false), 2.0);
+		matchingRule.addComparator(new LocationPhoneSift4Comparator(
 				LocationPhoneLevenshteinComparator.REGION_DE, false), 2.0);
+		matchingRule.addComparator(new LocationStreetAddressDistMetaComparator(1), 2.0);
 //		matchingRule.addComparator(new LocationStreetAddressMetaComparator(1), 2.0);
 //		matchingRule.addComparator(new LocationPhoneNameMetaComparator(), 2);
 //		matchingRule.addComparator(new LocationPostalCodeComparator(), 1.0);
-//		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);
+		matchingRule.addComparator(new LocationEmailUserDomainLevenshteinComparator(), 2);
 //		matchingRule.addComparator(new LocationWebsiteBaseLevenshteinComparator(), 2);
 		
 		
@@ -78,7 +83,7 @@ public class LocationIdentityResolution {
 				correspondences);
 		
 		MatchingGoldStandard goldstandard = new MatchingGoldStandard();
-		goldstandard.loadFromCSVFile(new File("src/main/resources/data/goldstandard/prinz_tripadvisor_gs.csv"));
+		goldstandard.loadFromCSVFile(new File("src/main/resources/data/goldstandard/yelp_tripadvisor_gs.csv"));
 		
 		MatchingEvaluator<Location, Attribute> evaluator = new MatchingEvaluator<>(true);
 		Performance performance = evaluator.evaluateMatching(correspondences.get(), goldstandard);

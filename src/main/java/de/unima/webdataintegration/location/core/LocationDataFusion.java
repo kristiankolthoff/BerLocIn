@@ -36,6 +36,7 @@ import de.unima.webdataintegration.location.fusion.fusers.RatingFuserNormalizedA
 import de.unima.webdataintegration.location.fusion.fusers.ReviewCountFuserSum;
 import de.unima.webdataintegration.location.fusion.fusers.ReviewsFuserUnion;
 import de.unima.webdataintegration.location.fusion.fusers.StreetAddressFuserVoting;
+import de.unima.webdataintegration.location.fusion.fusers.WebsiteFuserVoting;
 import de.unima.webdataintegration.location.fusion.rules.EMailEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.LatitudeEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.LongitudeEvaluationRule;
@@ -49,6 +50,7 @@ import de.unima.webdataintegration.location.fusion.rules.RatingEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.ReviewCountEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.ReviewsEvaluationRule;
 import de.unima.webdataintegration.location.fusion.rules.StreetAddressEvaluationRule;
+import de.unima.webdataintegration.location.fusion.rules.WebsiteEvaluationRule;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.LocationXMLFormatter;
 import de.unima.webdataintegration.location.model.LocationXMLReader;
@@ -116,6 +118,7 @@ public class LocationDataFusion {
 		strategy.addAttributeFuser(Location.PRICE, new PriceFuserAverage(), new PriceEvaluationRule());
 		strategy.addAttributeFuser(Location.PHOTO_URLS, new PhotosFuserUnion(), new PhotosEvaluationRule());
 		strategy.addAttributeFuser(Location.REVIEWS, new ReviewsFuserUnion(), new ReviewsEvaluationRule());
+		strategy.addAttributeFuser(Location.WEBSITE, new WebsiteFuserVoting(), new WebsiteEvaluationRule());
 		strategy.addAttributeFuser(Location.OPENING_HOURS, new OpeningHoursFuserIntersection(), new OpeningHoursEvaluationRule());
 		
 		//Run data fusion process
@@ -135,5 +138,10 @@ public class LocationDataFusion {
 		evaluator.setVerbose(true);
 		double accuarcy = evaluator.evaluate(fusedDataSet, goldstandard, null);
 		System.out.println("Accuarcy : " + accuarcy);
+		System.out.println("Density of fused dataset");
+		FusibleHashedDataSet<Location, Attribute> fusedFinal = new FusibleHashedDataSet<>();
+		new LocationXMLReader().loadFromXML(new File("src/main/resources/data/fusion/fused.xml"), 
+				"locations/location", fusedFinal);
+		fusedFinal.printDataSetDensityReport();
 	}
 }

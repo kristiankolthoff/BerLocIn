@@ -21,7 +21,7 @@ public class ReviewXMLFormatter extends XMLFormatter<Review>{
 
 	@Override
 	public Element createRootElement(Document doc) {
-		return doc.createElement("districts");
+		return doc.createElement("reviews");
 	}
 
 	@Override

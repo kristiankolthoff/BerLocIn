@@ -1,6 +1,7 @@
 package de.unima.webdataintegration.location.model;
 
 import java.time.DayOfWeek;
+import java.util.Objects;
 import java.util.Set;
 
 import org.w3c.dom.Document;
@@ -45,10 +46,18 @@ public class LocationXMLFormatter extends XMLFormatter<Location>{
 			Element elemWeekday = doc.createElement(weekday.getFirst());
 			for(OpeningHours openHours : tmpOpeningHours) {
 				if(openHours.getDayOfWeek() == weekday.getSecond()) {
-					elemWeekday.appendChild(doc.createElement("from").appendChild(doc.createTextNode(
-							openHours.getFrom().toString())));
-					elemWeekday.appendChild(doc.createElement("to").appendChild(doc.createTextNode(
-							openHours.getTo().toString())));
+					//Include from time only if its available in the fused record
+					if(Objects.nonNull(openHours.getFrom())) {
+						Element from = doc.createElement("from");
+						from.appendChild(doc.createTextNode(openHours.getFrom().toString()));
+						elemWeekday.appendChild(from);
+					}
+					//Include to time only if its available in the fused record
+					if(Objects.nonNull(openHours.getTo())) {
+						Element to = doc.createElement("to");
+						to.appendChild(doc.createTextNode(openHours.getTo().toString()));
+						elemWeekday.appendChild(to);
+					}
 				}
 			}
 			openingHours.appendChild(elemWeekday);

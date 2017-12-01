@@ -20,11 +20,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.unima.webdataintegration.location.model.Location;
 import de.unima.webdataintegration.location.model.OpeningHours;
 
-public class OpeningHoursIntersectionResolution extends ConflictResolutionFunction<Set<OpeningHours>, Location, Attribute>{
-
-	private static DateTimeFormatter germanFormatter = DateTimeFormatter
-			.ofLocalizedTime(FormatStyle.SHORT)
-			.withLocale(Locale.GERMAN);
+public class OpeningHoursUnionResolution extends ConflictResolutionFunction<Set<OpeningHours>, Location, Attribute>{
 
 	@Override
 	public FusedValue<Set<OpeningHours>, Location, Attribute> resolveConflict(
@@ -62,7 +58,7 @@ public class OpeningHoursIntersectionResolution extends ConflictResolutionFuncti
 		Optional<LocalTime> fusedTo = allHours.stream()
 				  .filter(x -> {return Objects.nonNull(x.getTo());})
 				  .map(x -> {return x.getTo();})
-				  .min((time1, time2) -> {return (time1.isAfter(time2)) ? 1 : -1;});
+				  .max((time1, time2) -> {return (time1.isAfter(time2)) ? 1 : -1;});
 		if(fusedFrom.isPresent()) fused.setFrom(fusedFrom.get());
 		if(fusedTo.isPresent()) fused.setTo(fusedTo.get());
 		return fused;

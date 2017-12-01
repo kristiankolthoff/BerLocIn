@@ -20,6 +20,7 @@ import org.junit.Test;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.LevenshteinSimilarity;
 import de.unima.webdataintegration.location.fusion.conflictresolution.OpeningHoursIntersectionResolution;
+import de.unima.webdataintegration.location.fusion.conflictresolution.OpeningHoursUnionResolution;
 import de.unima.webdataintegration.location.fusion.rules.OpeningHoursEvaluationRule;
 import de.unima.webdataintegration.location.identityresolution.blockingkeys.LocationBlockingKeyByRegion;
 import de.unima.webdataintegration.location.identityresolution.comparators.LocationDistanceAreaComparator;
@@ -159,15 +160,18 @@ public class LocationPhoneComparatorsTest {
 				.ofLocalizedTime(FormatStyle.SHORT)
 				.withLocale(Locale.GERMAN);
 		List<OpeningHours> allOpeningHours = new ArrayList<>();
-		allOpeningHours.add(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("19:31", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
-		allOpeningHours.add(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("19:00", germanFormatter), LocalTime.parse("22:30", germanFormatter)));
+		allOpeningHours.add(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("19:31", germanFormatter), LocalTime.parse("22:30", germanFormatter)));
+		allOpeningHours.add(new OpeningHours(DayOfWeek.FRIDAY, LocalTime.parse("19:00", germanFormatter), LocalTime.parse("21:30", germanFormatter)));
 
 		Optional<LocalTime> time = allOpeningHours.stream().map(x -> {return x.getFrom();})
 		 .min((time1, time2) -> {return (time1.isAfter(time2)) ? 1 : -1;});
 		System.out.println(time.toString());
 		OpeningHoursIntersectionResolution resolution = new OpeningHoursIntersectionResolution();
 		OpeningHours fused = resolution.createFusedOpeningHours(allOpeningHours, DayOfWeek.FRIDAY);
-		System.out.println(fused.getFrom().toString() + " : " + fused.getTo());
+		System.out.println("Hours intersection " + fused.getFrom().toString() + " : " + fused.getTo());
+		OpeningHoursUnionResolution resolutionUnion = new OpeningHoursUnionResolution();
+		OpeningHours fusedUnion = resolutionUnion.createFusedOpeningHours(allOpeningHours, DayOfWeek.FRIDAY);
+		System.out.println("Hours union " + fusedUnion.getFrom().toString() + " : " + fusedUnion.getTo());
 	}
 	
 	public String preprocess(String website) {

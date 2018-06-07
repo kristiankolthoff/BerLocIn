@@ -1,0 +1,23 @@
+prinz_5623,yelp_31616,false, same address diff. name
+prinz_5111,yelp_16196,true, diff. name diff. phone
+prinz_8771,yelp_8208,false, same address diff. name
+prinz_9566,yelp_30956,false, same name diff. address
+prinz_9566,yelp_30958,false, same name diff. address
+prinz_298,yelp_25085,true, diff. name
+prinz_9581,yelp_30960,true, diff. name
+prinz_323,yelp_3001,true, diff. name
+prinz_1559,yelp_12513,false, same name diff. address
+prinz_3816,yelp_19856,true, diff. name diff address
+prinz_5650,yelp_2077,false, similar name diff address
+prinz_6109,yelp_1154,true, same address name translation
+prinz_4703,yelp_7929,true, diff name diff address
+prinz_4769,yelp_29691,true,diff name diff address
+prinz_2625,yelp_17272,true, same name different address and phone
+prinz_4646,yelp_29978,true,similar name diff address
+prinz_6313,yelp_2904,false, same name diff address
+prinz_6030,yelp_32827,false,similar name same address
+prinz_245,yelp_12838,true,same name diff address
+prinz_2413,yelp_25084,false, similar name diff address
+prinz_6921,yelp_10867,true, similar name diff address
+prinz_9622,yelp_27569,true, same name diff phone
+prinz_3673,yelp_2071,true, diff name diff address same phone

@@ -1,0 +1,40 @@
+<sparql xmlns="http://www.w3.org/2005/sparql-results#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
+ <head>
+  <variable name="area"/>
+  <variable name="abstract"/>
+  <variable name="district"/>
+  <variable name="areaCode"/>
+  <variable name="elevation"/>
+  <variable name="populationAsOf"/>
+  <variable name="populationTotal"/>
+  <variable name="postalCode"/>
+  <variable name="density"/>
+  <variable name="latDeg"/>
+  <variable name="latMin"/>
+  <variable name="latSec"/>
+  <variable name="lonDeg"/>
+  <variable name="lonMin"/>
+  <variable name="lonSec"/>
+  <variable name="depiction"/>
+ </head>
+ <results distinct="false" ordered="true">
+  <result>
+   <binding name="area"><literal datatype="http://www.w3.org/2001/XMLSchema#double">8.03e+06</literal></binding>
+   <binding name="abstract"><literal xml:lang="en">Spandau is a locality (Ortsteil) of Berlin in the homonymous borough (Bezirk) of Spandau. The historic city is situated, for the most part, on the western banks of the Havel river. As of 2008 the estimated population of Spandau was 33,433.</literal></binding>
+   <binding name="district"><uri>http://dbpedia.org/resource/Spandau</uri></binding>
+   <binding name="areaCode"><literal>B</literal></binding>
+   <binding name="elevation"><literal datatype="http://www.w3.org/2001/XMLSchema#double">35.0</literal></binding>
+   <binding name="populationAsOf"><literal datatype="http://www.w3.org/2001/XMLSchema#date">2008-06-30</literal></binding>
+   <binding name="populationTotal"><literal datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">33433</literal></binding>
+   <binding name="postalCode"><literal>(nr. 0501) 13403, 13407, 13409</literal></binding>
+   <binding name="density"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">4164</literal></binding>
+   <binding name="latDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">52</literal></binding>
+   <binding name="latMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">32</literal></binding>
+   <binding name="latSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">10</literal></binding>
+   <binding name="lonDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">13</literal></binding>
+   <binding name="lonMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">12</literal></binding>
+   <binding name="lonSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">12</literal></binding>
+   <binding name="depiction"><uri>http://commons.wikimedia.org/wiki/Special:FilePath/2013-08_View_from_Rathaus_Spandau_03.jpg</uri></binding>
+  </result>
+ </results>
+</sparql>

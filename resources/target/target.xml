@@ -1,0 +1,61 @@
+<locations>
+<location>
+	<id>1d</id>
+	<name>Bikini Berlin</name>
+	<type>Restaurant</type>
+	<email>test@web.de</email>
+	<website>www.bikini.de</website>
+	<phone>+49213053123abc</phone>
+	<streetAddress>Am Kuhdamm</streetAddress>
+	<postalCode>75482da</postalCode>
+	<latitude>54.324</latitude>
+	<longitude>49.324</longitude>
+	<openinghours>
+		<monday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</monday>
+		<tuesday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</tuesday>
+		<wednesday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</wednesday>
+		<thursday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</thursday>
+		<friday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</friday>
+		<saturday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</saturday>
+		<sunday>
+			<from>18:00</from>
+			<to>22:00</to>
+		</sunday>
+	</openinghours>
+	<rating>4.0</rating>
+	<reviewCount>1</reviewCount>
+	<price>expensive</price>
+	<photos>
+		<url>http://google.de</url>
+		<url>http://google.de</url>
+	</photos>
+	<reviews>
+		<review>
+			<username>sabine s</username>
+			<userimg>http://google.de</userimg>
+			<heading>super lecker</heading>
+			<rating>5</rating>
+			<content>Klasse restaurant, das beste hier</content>
+			<date>18. Januar 2017</date>
+		</review>
+	</reviews>
+</location>
+</locations>

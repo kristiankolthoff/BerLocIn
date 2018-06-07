@@ -1,0 +1,40 @@
+<sparql xmlns="http://www.w3.org/2005/sparql-results#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
+ <head>
+  <variable name="area"/>
+  <variable name="abstract"/>
+  <variable name="district"/>
+  <variable name="areaCode"/>
+  <variable name="elevation"/>
+  <variable name="populationAsOf"/>
+  <variable name="populationTotal"/>
+  <variable name="postalCode"/>
+  <variable name="density"/>
+  <variable name="latDeg"/>
+  <variable name="latMin"/>
+  <variable name="latSec"/>
+  <variable name="lonDeg"/>
+  <variable name="lonMin"/>
+  <variable name="lonSec"/>
+  <variable name="depiction"/>
+ </head>
+ <results distinct="false" ordered="true">
+  <result>
+   <binding name="area"><literal datatype="http://www.w3.org/2001/XMLSchema#double">1.17e+07</literal></binding>
+   <binding name="abstract"><literal xml:lang="en">Neukölln is an inner-city locality (Ortsteil) of Berlin in the homonymous borough (Bezirk) of Neukölln, including the historic village of Rixdorf and numerous Gründerzeit apartment blocks. The Ortsteil is densely settled a with a population of 154,127 inhabitants (2009) and is the most populated one of Berlin. It is characterized by a high percentage of immigrants, especially of Turkish and Russian descent. In the past few years, northern Neukölln, frequently known as &quot;Kreuzkölln&quot;, has undergone a transformation and has seen a huge influx of students and artists as the area becomes increasingly popular.</literal></binding>
+   <binding name="district"><uri>http://dbpedia.org/resource/Neukölln</uri></binding>
+   <binding name="areaCode"><literal>B</literal></binding>
+   <binding name="elevation"><literal datatype="http://www.w3.org/2001/XMLSchema#double">52.0</literal></binding>
+   <binding name="populationAsOf"><literal datatype="http://www.w3.org/2001/XMLSchema#date">2009-06-30</literal></binding>
+   <binding name="populationTotal"><literal datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">154127</literal></binding>
+   <binding name="postalCode"><literal>(nr. 0801) 12043, 12045, 12047, 12049, 12051, 12053, 12055, 12057, 12059</literal></binding>
+   <binding name="density"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">13173</literal></binding>
+   <binding name="latDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">52</literal></binding>
+   <binding name="latMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">28</literal></binding>
+   <binding name="latSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">53</literal></binding>
+   <binding name="lonDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">13</literal></binding>
+   <binding name="lonMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">26</literal></binding>
+   <binding name="lonSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">7</literal></binding>
+   <binding name="depiction"><uri>http://commons.wikimedia.org/wiki/Special:FilePath/Hermannplatz3_Berlin_Neukoelln.JPG</uri></binding>
+  </result>
+ </results>
+</sparql>

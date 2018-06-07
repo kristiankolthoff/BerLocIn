@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="locations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="location">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="id" type="xs:string"/>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="type" type="xs:string"/>
+							<xs:element name="email" type="xs:string"/>
+							<xs:element name="website" type="xs:string"/>
+							<xs:element name="phone" type="xs:string"/>
+							<xs:element name="streetAddress" type="xs:string"/>
+							<xs:element name="postalCode" type="xs:string"/>
+							<xs:element name="latitude" type="xs:decimal"/>
+							<xs:element name="longitude" type="xs:decimal"/>
+							<xs:element name="openinghours">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="monday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="tuesday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="wednesday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="thursday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="friday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="saturday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="sunday">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="from" type="xs:string"/>
+													<xs:element name="to" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="rating" type="xs:decimal"/>
+							<xs:element name="reviewCount" type="xs:byte"/>
+							<xs:element name="price" type="xs:string"/>
+							<xs:element name="photos">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="url" maxOccurs="unbounded" type="xs:anyURI"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="reviews">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="review">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="username" type="xs:string"/>
+													<xs:element name="userimg" type="xs:anyURI"/>
+													<xs:element name="heading" type="xs:string"/>
+													<xs:element name="rating" type="xs:byte"/>
+													<xs:element name="content" type="xs:string"/>
+													<xs:element name="date" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2018 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap" uid="1" editable="1" blackbox="0">
+		<properties SelectedLanguage="builtin"/>
+		<structure>
+			<children>
+				<component name="auto-number" library="core" uid="5" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="377" lty="91" rbx="515" rby="177"/>
+				</component>
+				<component name="TimeParser" library="user" uid="23" kind="19" visible="0" blackbox="0">
+					<view ltx="516" lty="239" rbx="613" rby="256"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="85" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="86" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="24" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="288" rbx="615" rby="305"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="87" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="88" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="25" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="337" rbx="615" rby="354"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="89" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="90" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="26" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="387" rbx="615" rby="404"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="91" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="92" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="28" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="493" rbx="615" rby="510"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="93" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="94" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="29" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="550" rbx="615" rby="567"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="95" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="96" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="30" kind="19" visible="0" blackbox="0">
+					<view ltx="516" lty="609" rbx="613" rby="626"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="97" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="98" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="33" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="781" rbx="615" rby="798"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="99" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="100" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="34" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="840" rbx="615" rby="857"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="101" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="102" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="35" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="899" rbx="615" rby="916"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="103" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="104" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="31" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="664" rbx="615" rby="681"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="105" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="106" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="32" kind="19" visible="0" blackbox="0">
+					<view ltx="516" lty="729" rbx="613" rby="746"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="107" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="108" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="27" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="441" rbx="615" rby="458"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="124" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="125" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="TimeParser" library="user" uid="22" kind="19" visible="0" blackbox="0">
+					<view ltx="518" lty="190" rbx="615" rby="207"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="value" inpkey="83" componentid="20"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="84" componentid="21"/>
+						</root>
+					</data>
+				</component>
+				<component name="Text file" library="text" uid="36" kind="16">
+					<properties/>
+					<view ltx="37" lty="154" rbx="282" rby="723"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" outkey="126" expanded="1">
+										<entry name="name" outkey="127"/>
+										<entry name="category" outkey="128"/>
+										<entry name="streetAddress" outkey="129"/>
+										<entry name="postalCode" outkey="130"/>
+										<entry name="latitude" outkey="131"/>
+										<entry name="longitude" outkey="132"/>
+										<entry name="phone" outkey="133"/>
+										<entry name="email" outkey="134"/>
+										<entry name="website" outkey="135"/>
+										<entry name="prinzRating" outkey="136"/>
+										<entry name="imageUrl" outkey="137"/>
+										<entry name="mo1" outkey="138"/>
+										<entry name="mo2" outkey="139"/>
+										<entry name="tu1" outkey="140"/>
+										<entry name="tu2" outkey="141"/>
+										<entry name="we1" outkey="142"/>
+										<entry name="we2" outkey="143"/>
+										<entry name="th1" outkey="144"/>
+										<entry name="th2" outkey="145"/>
+										<entry name="fr1" outkey="146"/>
+										<entry name="fr2" outkey="147"/>
+										<entry name="sa1" outkey="148"/>
+										<entry name="sa2" outkey="149"/>
+										<entry name="su1" outkey="150"/>
+										<entry name="su2" outkey="151"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="..\input\PostPostFinal_Prnz.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="Text file" block="Rows">
+									<field0 name="name" type="string"/>
+									<field1 name="category" type="string"/>
+									<field2 name="streetAddress" type="string"/>
+									<field3 name="postalCode" type="string"/>
+									<field4 name="latitude" type="decimal"/>
+									<field5 name="longitude" type="decimal"/>
+									<field6 name="phone" type="string"/>
+									<field7 name="email" type="string"/>
+									<field8 name="website" type="string"/>
+									<field9 name="prinzRating" type="decimal"/>
+									<field10 name="openingHours" type="string"/>
+									<field11 name="publicTransportation" type="string"/>
+									<field12 name="imageUrl" type="string"/>
+									<field13 name="prinzUrl" type="string"/>
+									<field14 name="id" type="string"/>
+									<field15 name="mo1" type="string"/>
+									<field16 name="mo2" type="string"/>
+									<field17 name="tu1" type="string"/>
+									<field18 name="tu2" type="string"/>
+									<field19 name="we1" type="string"/>
+									<field20 name="we2" type="string"/>
+									<field21 name="th1" type="string"/>
+									<field22 name="th2" type="string"/>
+									<field23 name="fr1" type="string"/>
+									<field24 name="fr2" type="string"/>
+									<field25 name="sa1" type="string"/>
+									<field26 name="sa2" type="string"/>
+									<field27 name="su1" type="string"/>
+									<field28 name="su2" type="string"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="3" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="412" lty="12" rbx="483" rby="29"/>
+					<data>
+						<constant value="prinz_" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="4" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="548" lty="22" rbx="626" rby="78"/>
+				</component>
+				<component name="target" library="xml" uid="9" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="843" lty="49" rbx="1019" rby="745"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="locations" expanded="1">
+										<entry name="location" inpkey="53" expanded="1">
+											<entry name="id" inpkey="54"/>
+											<entry name="name" inpkey="55"/>
+											<entry name="type" inpkey="109"/>
+											<entry name="email" inpkey="56"/>
+											<entry name="website" inpkey="57"/>
+											<entry name="phone" inpkey="58"/>
+											<entry name="streetAddress" inpkey="59"/>
+											<entry name="postalCode" inpkey="60"/>
+											<entry name="latitude" inpkey="61"/>
+											<entry name="longitude" inpkey="62"/>
+											<entry name="openinghours" expanded="1">
+												<entry name="monday" expanded="1">
+													<entry name="from" inpkey="82"/>
+													<entry name="to" inpkey="110"/>
+												</entry>
+												<entry name="tuesday" expanded="1">
+													<entry name="from" inpkey="111"/>
+													<entry name="to" inpkey="112"/>
+												</entry>
+												<entry name="wednesday" expanded="1">
+													<entry name="from" inpkey="113"/>
+													<entry name="to" inpkey="114"/>
+												</entry>
+												<entry name="thursday" expanded="1">
+													<entry name="from" inpkey="115"/>
+													<entry name="to" inpkey="116"/>
+												</entry>
+												<entry name="friday" expanded="1">
+													<entry name="from" inpkey="117"/>
+													<entry name="to" inpkey="118"/>
+												</entry>
+												<entry name="saturday" expanded="1">
+													<entry name="from" inpkey="119"/>
+													<entry name="to" inpkey="120"/>
+												</entry>
+												<entry name="sunday" expanded="1">
+													<entry name="from" inpkey="121"/>
+													<entry name="to" inpkey="122"/>
+												</entry>
+											</entry>
+											<entry name="rating" inpkey="63"/>
+											<entry name="photos" expanded="1">
+												<entry name="url" inpkey="123"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\target\target.xsd" inputinstance="..\target\target.xml" outputinstance="..\target\target.xml" instanceroot="{}locations"/>
+					</data>
+				</component>
+				<component name="substring-before" library="core" uid="41" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="198"/>
+						<datapoint pos="1" key="196"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="199"/>
+					</targets>
+					<view ltx="369" lty="337" rbx="483" rby="391"/>
+				</component>
+				<component name="constant" library="core" uid="42" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="192"/>
+					</targets>
+					<view ltx="313" lty="409" rbx="356" rby="426"/>
+					<data>
+						<constant value="." datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="44" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="197"/>
+					</targets>
+					<view ltx="643" lty="273" rbx="691" rby="290"/>
+					<data>
+						<constant value="+" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="43" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="195"/>
+						<datapoint pos="1" key="193"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="194"/>
+					</targets>
+					<view ltx="686" lty="299" rbx="764" rby="355"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="54" edgekey="64"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="82" edgekey="152"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="86">
+						<edges>
+							<edge vertexkey="110" edgekey="153"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="88">
+						<edges>
+							<edge vertexkey="111" edgekey="154"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="90">
+						<edges>
+							<edge vertexkey="112" edgekey="155"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="92">
+						<edges>
+							<edge vertexkey="113" edgekey="156"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="94">
+						<edges>
+							<edge vertexkey="115" edgekey="157"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="96">
+						<edges>
+							<edge vertexkey="116" edgekey="158"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="98">
+						<edges>
+							<edge vertexkey="117" edgekey="159"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="100">
+						<edges>
+							<edge vertexkey="120" edgekey="160"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="102">
+						<edges>
+							<edge vertexkey="121" edgekey="161"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="104">
+						<edges>
+							<edge vertexkey="122" edgekey="162"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="106">
+						<edges>
+							<edge vertexkey="118" edgekey="163"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="108">
+						<edges>
+							<edge vertexkey="119" edgekey="164"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="125">
+						<edges>
+							<edge vertexkey="114" edgekey="165"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="126">
+						<edges>
+							<edge vertexkey="53" edgekey="166"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="127">
+						<edges>
+							<edge vertexkey="55" edgekey="167"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="128">
+						<edges>
+							<edge vertexkey="109" edgekey="168"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="129">
+						<edges>
+							<edge vertexkey="59" edgekey="169"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="130">
+						<edges>
+							<edge vertexkey="60" edgekey="170"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="131">
+						<edges>
+							<edge vertexkey="61" edgekey="171"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="132">
+						<edges>
+							<edge vertexkey="62" edgekey="172"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="133">
+						<edges>
+							<edge vertexkey="198" edgekey="200"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="134">
+						<edges>
+							<edge vertexkey="56" edgekey="174"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="135">
+						<edges>
+							<edge vertexkey="57" edgekey="175"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="136">
+						<edges>
+							<edge vertexkey="63" edgekey="176"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="137">
+						<edges>
+							<edge vertexkey="123" edgekey="177"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="138">
+						<edges>
+							<edge vertexkey="83" edgekey="178"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="139">
+						<edges>
+							<edge vertexkey="85" edgekey="179"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="140">
+						<edges>
+							<edge vertexkey="87" edgekey="180"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="141">
+						<edges>
+							<edge vertexkey="89" edgekey="181"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="142">
+						<edges>
+							<edge vertexkey="91" edgekey="182"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="143">
+						<edges>
+							<edge vertexkey="124" edgekey="183"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="144">
+						<edges>
+							<edge vertexkey="93" edgekey="184"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="145">
+						<edges>
+							<edge vertexkey="95" edgekey="185"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="146">
+						<edges>
+							<edge vertexkey="97" edgekey="186"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="147">
+						<edges>
+							<edge vertexkey="105" edgekey="187"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="148">
+						<edges>
+							<edge vertexkey="107" edgekey="188"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="149">
+						<edges>
+							<edge vertexkey="99" edgekey="189"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="150">
+						<edges>
+							<edge vertexkey="101" edgekey="190"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="151">
+						<edges>
+							<edge vertexkey="103" edgekey="191"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="192">
+						<edges>
+							<edge vertexkey="196" edgekey="201"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="194">
+						<edges>
+							<edge vertexkey="58" edgekey="202"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="197">
+						<edges>
+							<edge vertexkey="195" edgekey="203"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="199">
+						<edges>
+							<edge vertexkey="193" edgekey="204"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="TimeParser" library="user" uid="16" editable="1" inline="1" blackbox="0">
+		<properties/>
+		<description/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="18" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="262" lty="10" rbx="305" rby="27"/>
+					<data>
+						<constant value="." datatype="string"/>
+					</data>
+				</component>
+				<component name="value" library="core" uid="20" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view rbx="80" rby="38"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="value"/>
+					</data>
+				</component>
+				<component name="from" library="core" uid="21" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+					</sources>
+					<view ltx="713" rbx="765" rby="38"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="from"/>
+					</data>
+				</component>
+				<component name="replace" library="lang" uid="19" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+						<datapoint pos="1" key="4"/>
+						<datapoint pos="2" key="6"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="366" rbx="463" rby="70"/>
+				</component>
+				<component name="replace" library="lang" uid="37" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="11"/>
+						<datapoint pos="1" key="9"/>
+						<datapoint pos="2" key="10"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="504" lty="101" rbx="601" rby="171"/>
+				</component>
+				<component name="constant" library="core" uid="17" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="250" lty="38" rbx="293" rby="55"/>
+					<data>
+						<constant value=":" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="38" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="13"/>
+					</targets>
+					<view ltx="379" lty="190" rbx="422" rby="207"/>
+					<data>
+						<constant value="&apos;" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="39" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="14"/>
+					</targets>
+					<view ltx="409" lty="220" rbx="449" rby="237"/>
+					<data>
+						<constant datatype="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="11" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="6" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="1" edgekey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="8" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="9" edgekey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="10" edgekey="21"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

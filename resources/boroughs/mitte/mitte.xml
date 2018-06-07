@@ -1,0 +1,40 @@
+<sparql xmlns="http://www.w3.org/2005/sparql-results#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
+ <head>
+  <variable name="area"/>
+  <variable name="abstract"/>
+  <variable name="district"/>
+  <variable name="areaCode"/>
+  <variable name="elevation"/>
+  <variable name="populationAsOf"/>
+  <variable name="populationTotal"/>
+  <variable name="postalCode"/>
+  <variable name="density"/>
+  <variable name="latDeg"/>
+  <variable name="latMin"/>
+  <variable name="latSec"/>
+  <variable name="lonDeg"/>
+  <variable name="lonMin"/>
+  <variable name="lonSec"/>
+  <variable name="depiction"/>
+ </head>
+ <results distinct="false" ordered="true">
+  <result>
+   <binding name="area"><literal datatype="http://www.w3.org/2001/XMLSchema#double">1.07e+07</literal></binding>
+   <binding name="abstract"><literal xml:lang="en">Mitte (German for &quot;middle, centre&quot;, commonly used without an article) is a central locality (Ortsteil) of Berlin in the homonymous district (Bezirk) of Mitte. Until 2001 it was itself an autonomous district. It comprises the historic centre of Alt-Berlin around the churches of St. Nicholas and St. Mary, renowned Museum Island, the city hall Rotes Rathaus, the city administrative building Altes Stadthaus, the famous Fernsehturm, Brandenburg Gate at the end of the central boulevard Unter den Linden and more main tourist attractions of the city. For these reasons Mitte is considered the &quot;heart&quot; of Berlin.</literal></binding>
+   <binding name="district"><uri>http://dbpedia.org/resource/Mitte</uri></binding>
+   <binding name="areaCode"><literal>B</literal></binding>
+   <binding name="elevation"><literal datatype="http://www.w3.org/2001/XMLSchema#double">52.0</literal></binding>
+   <binding name="populationAsOf"><literal datatype="http://www.w3.org/2001/XMLSchema#date">2009-06-30</literal></binding>
+   <binding name="populationTotal"><literal datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">79582</literal></binding>
+   <binding name="postalCode"><literal>(nr. 0101) 10115, 10117, 10119, 10178, 10179</literal></binding>
+   <binding name="density"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">7445</literal></binding>
+   <binding name="latDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">52</literal></binding>
+   <binding name="latMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">31</literal></binding>
+   <binding name="latSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">10</literal></binding>
+   <binding name="lonDeg"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">13</literal></binding>
+   <binding name="lonMin"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">24</literal></binding>
+   <binding name="lonSec"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">24</literal></binding>
+   <binding name="depiction"><uri>http://commons.wikimedia.org/wiki/Special:FilePath/Über_den_Dächern_von_Berlin.jpg</uri></binding>
+  </result>
+ </results>
+</sparql>

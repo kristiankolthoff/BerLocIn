@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2018 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="22">
+	<resources/>
+	<component name="defaultmap" uid="1" editable="1" blackbox="0">
+		<properties SelectedLanguage="builtin"/>
+		<structure>
+			<children>
+				<component name="auto-number" library="core" uid="4" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+					</targets>
+					<view ltx="486" lty="19" rbx="624" rby="105"/>
+				</component>
+				<component name="constant" library="core" uid="6" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="26"/>
+					</targets>
+					<view ltx="486" lty="-19" rbx="586" rby="-2"/>
+					<data>
+						<constant value="tripadvisor_" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="72" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="306"/>
+					</targets>
+					<view ltx="824" lty="725" rbx="862" rby="742"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="74" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="295"/>
+					</targets>
+					<view ltx="866" lty="802" rbx="904" rby="819"/>
+					<data>
+						<constant value="2" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="82" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="324"/>
+					</targets>
+					<view ltx="971" lty="1007" rbx="1009" rby="1024"/>
+					<data>
+						<constant value="5" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="79" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="315"/>
+					</targets>
+					<view ltx="925" lty="855" rbx="963" rby="872"/>
+					<data>
+						<constant value="3" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="81" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="319"/>
+					</targets>
+					<view ltx="960" lty="923" rbx="998" rby="940"/>
+					<data>
+						<constant value="4" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="tokenize" library="core" uid="77" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="303"/>
+						<datapoint pos="1" key="301"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="297"/>
+					</targets>
+					<view ltx="739" lty="765" rbx="829" rby="819"/>
+				</component>
+				<component name="constant" library="core" uid="71" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="300"/>
+					</targets>
+					<view ltx="588" lty="818" rbx="646" rby="835"/>
+					<data>
+						<constant value="#-#" datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="70" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="308"/>
+					</targets>
+					<view ltx="469" lty="802" rbx="529" rby="819"/>
+					<data>
+						<constant value="+-+" datatype="string"/>
+					</data>
+				</component>
+				<component name="concat" library="core" uid="5" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="23"/>
+						<datapoint pos="1" key="24"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="757" lty="-19" rbx="835" rby="37"/>
+				</component>
+				<component name="RangeSplitter" library="user" uid="89" kind="19" visible="0" blackbox="0">
+					<view ltx="604" lty="341" rbx="703" rby="358"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="385" componentid="67"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="price" outkey="396" componentid="68"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="21" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="70" rbx="891" rby="104"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="52" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="54" componentid="20"/>
+							<entry name="to" outkey="53" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="23" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="153" rbx="891" rby="187"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="69" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="71" componentid="20"/>
+							<entry name="to" outkey="72" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="24" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="237" rbx="891" rby="271"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="75" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="77" componentid="20"/>
+							<entry name="to" outkey="76" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="26" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="415" rbx="891" rby="449"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="89" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="88" componentid="20"/>
+							<entry name="to" outkey="87" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="27" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="497" rbx="891" rby="531"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="95" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="94" componentid="20"/>
+							<entry name="to" outkey="93" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="FromToSplit" library="user" uid="28" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="573" rbx="891" rby="607"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="99" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="100" componentid="20"/>
+							<entry name="to" outkey="101" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="item-at" library="core" uid="73" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="304"/>
+						<datapoint pos="1" key="307"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="305"/>
+					</targets>
+					<view ltx="903" lty="661" rbx="1009" rby="715"/>
+				</component>
+				<component name="item-at" library="core" uid="75" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="298"/>
+						<datapoint pos="1" key="296"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="299"/>
+					</targets>
+					<view ltx="939" lty="746" rbx="1045" rby="800"/>
+				</component>
+				<component name="item-at" library="core" uid="85" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="331"/>
+						<datapoint pos="1" key="332"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="330"/>
+					</targets>
+					<view ltx="1045" lty="903" rbx="1151" rby="957"/>
+				</component>
+				<component name="item-at" library="core" uid="83" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="322"/>
+						<datapoint pos="1" key="325"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="323"/>
+					</targets>
+					<view ltx="1076" lty="970" rbx="1182" rby="1024"/>
+				</component>
+				<component name="tokenize" library="core" uid="76" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="310"/>
+						<datapoint pos="1" key="309"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="302"/>
+					</targets>
+					<view ltx="588" lty="722" rbx="678" rby="776"/>
+				</component>
+				<component name="Text file" library="text" uid="87" kind="16">
+					<properties/>
+					<view ltx="171" lty="-16" rbx="421" rby="357"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1">
+									<entry name="Rows" outkey="375" expanded="1">
+										<entry name="name" outkey="376"/>
+										<entry name="imageUrl" outkey="398"/>
+										<entry name="priceRange" outkey="377"/>
+										<entry name="rating" outkey="378"/>
+										<entry name="reviewCount" outkey="379"/>
+										<entry name="streetAddress" outkey="380"/>
+										<entry name="postalCode" outkey="381"/>
+										<entry name="phone" outkey="382"/>
+										<entry name="email" outkey="383"/>
+										<entry name="monday" outkey="400"/>
+										<entry name="tuesday" outkey="401"/>
+										<entry name="wednesday" outkey="402"/>
+										<entry name="thursday" outkey="403"/>
+										<entry name="friday" outkey="404"/>
+										<entry name="saturday" outkey="405"/>
+										<entry name="sunday" outkey="406"/>
+										<entry name="category" outkey="407"/>
+										<entry name="reviews" outkey="384"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<text type="csv" inputinstance="..\..\..\..\..\PrinzScraper\prinz\tutorial\tutorial\spiders\tripadvisor_locations.csv" encoding="1000" byteorder="1" byteordermark="0">
+							<settings separator="," quote="&quot;" firstrownames="true" removeempty="true">
+								<names root="Text file" block="Rows">
+									<field0 name="name" type="string"/>
+									<field1 name="url" type="string"/>
+									<field2 name="imageUrl" type="string"/>
+									<field3 name="priceRange" type="string"/>
+									<field4 name="rating" type="string"/>
+									<field5 name="reviewCount" type="string"/>
+									<field6 name="streetAddress" type="string"/>
+									<field7 name="addressLocality" type="string"/>
+									<field8 name="postalCode" type="string"/>
+									<field9 name="phone" type="string"/>
+									<field10 name="email" type="string"/>
+									<field11 name="monday" type="string"/>
+									<field12 name="tuesday" type="string"/>
+									<field13 name="wednesday" type="string"/>
+									<field14 name="thursday" type="string"/>
+									<field15 name="friday" type="string"/>
+									<field16 name="saturday" type="string"/>
+									<field17 name="sunday" type="string"/>
+									<field18 name="category" type="string"/>
+									<field19 name="reviews" type="string"/>
+								</names>
+							</settings>
+						</text>
+					</data>
+				</component>
+				<component name="item-at" library="core" uid="84" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="327"/>
+						<datapoint pos="1" key="329"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="328"/>
+					</targets>
+					<view ltx="1016" lty="840" rbx="1122" rby="894"/>
+				</component>
+				<component name="FromToSplit" library="user" uid="25" kind="19" visible="0" blackbox="0">
+					<view ltx="792" lty="324" rbx="891" rby="358"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="string" inpkey="82" componentid="18"/>
+						</root>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="from" outkey="81" componentid="20"/>
+							<entry name="to" outkey="83" componentid="19"/>
+						</root>
+					</data>
+				</component>
+				<component name="target" library="xml" uid="104" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1"/>
+					<view ltx="1315" lty="-71" rbx="1584" rby="763"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="locations" expanded="1">
+										<entry name="location" inpkey="430" expanded="1">
+											<entry name="id" inpkey="431"/>
+											<entry name="name" inpkey="432"/>
+											<entry name="type" inpkey="433"/>
+											<entry name="email" inpkey="434"/>
+											<entry name="phone" inpkey="435"/>
+											<entry name="streetAddress" inpkey="436"/>
+											<entry name="postalCode" inpkey="437"/>
+											<entry name="openinghours" expanded="1">
+												<entry name="monday" expanded="1">
+													<entry name="from" inpkey="438"/>
+													<entry name="to" inpkey="439"/>
+												</entry>
+												<entry name="tuesday" expanded="1">
+													<entry name="from" inpkey="440"/>
+													<entry name="to" inpkey="441"/>
+												</entry>
+												<entry name="wednesday" expanded="1">
+													<entry name="from" inpkey="442"/>
+													<entry name="to" inpkey="443"/>
+												</entry>
+												<entry name="thursday" expanded="1">
+													<entry name="from" inpkey="444"/>
+													<entry name="to" inpkey="445"/>
+												</entry>
+												<entry name="friday" expanded="1">
+													<entry name="from" inpkey="446"/>
+													<entry name="to" inpkey="447"/>
+												</entry>
+												<entry name="saturday" expanded="1">
+													<entry name="from" inpkey="448"/>
+													<entry name="to" inpkey="449"/>
+												</entry>
+												<entry name="sunday" expanded="1">
+													<entry name="from" inpkey="450"/>
+													<entry name="to" inpkey="451"/>
+												</entry>
+											</entry>
+											<entry name="rating" inpkey="452"/>
+											<entry name="reviewCount" inpkey="453"/>
+											<entry name="price" inpkey="454"/>
+											<entry name="photos" expanded="1">
+												<entry name="url" inpkey="455"/>
+											</entry>
+											<entry name="reviews" inpkey="456" expanded="1">
+												<entry name="review" inpkey="457" expanded="1">
+													<entry name="username" inpkey="458"/>
+													<entry name="heading" inpkey="459"/>
+													<entry name="rating" inpkey="460"/>
+													<entry name="content" inpkey="461"/>
+													<entry name="date" inpkey="462"/>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\target\target.xsd" inputinstance="..\target\target.xml" outputinstance="..\target\target.xml" instanceroot="{}locations"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="24" edgekey="56"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="431" edgekey="463"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="23" edgekey="58"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="53">
+						<edges>
+							<edge vertexkey="439" edgekey="464"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="54">
+						<edges>
+							<edge vertexkey="438" edgekey="465"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="71">
+						<edges>
+							<edge vertexkey="440" edgekey="466"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="72">
+						<edges>
+							<edge vertexkey="441" edgekey="467"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="76">
+						<edges>
+							<edge vertexkey="443" edgekey="468"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="77">
+						<edges>
+							<edge vertexkey="442" edgekey="469"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="81">
+						<edges>
+							<edge vertexkey="444" edgekey="470"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="83">
+						<edges>
+							<edge vertexkey="445" edgekey="471"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="87">
+						<edges>
+							<edge vertexkey="447" edgekey="472"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="88">
+						<edges>
+							<edge vertexkey="446" edgekey="473"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="93">
+						<edges>
+							<edge vertexkey="449" edgekey="474"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="94">
+						<edges>
+							<edge vertexkey="448" edgekey="475"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="100">
+						<edges>
+							<edge vertexkey="450" edgekey="476"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="101">
+						<edges>
+							<edge vertexkey="451" edgekey="477"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="295">
+						<edges>
+							<edge vertexkey="296" edgekey="336"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="297">
+						<edges>
+							<edge vertexkey="298" edgekey="337"/>
+							<edge vertexkey="304" edgekey="338"/>
+							<edge vertexkey="322" edgekey="339"/>
+							<edge vertexkey="327" edgekey="340"/>
+							<edge vertexkey="331" edgekey="341"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="299">
+						<edges>
+							<edge vertexkey="459" edgekey="478"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="300">
+						<edges>
+							<edge vertexkey="301" edgekey="343"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="302">
+						<edges>
+							<edge vertexkey="303" edgekey="344"/>
+							<edge vertexkey="457" edgekey="479"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="305">
+						<edges>
+							<edge vertexkey="458" edgekey="480"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="306">
+						<edges>
+							<edge vertexkey="307" edgekey="347"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="308">
+						<edges>
+							<edge vertexkey="309" edgekey="348"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="315">
+						<edges>
+							<edge vertexkey="329" edgekey="349"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="319">
+						<edges>
+							<edge vertexkey="332" edgekey="350"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="323">
+						<edges>
+							<edge vertexkey="461" edgekey="481"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="324">
+						<edges>
+							<edge vertexkey="325" edgekey="352"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="328">
+						<edges>
+							<edge vertexkey="462" edgekey="496"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="330">
+						<edges>
+							<edge vertexkey="460" edgekey="483"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="375">
+						<edges>
+							<edge vertexkey="430" edgekey="484"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="376">
+						<edges>
+							<edge vertexkey="432" edgekey="485"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="377">
+						<edges>
+							<edge vertexkey="385" edgekey="388"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="378">
+						<edges>
+							<edge vertexkey="452" edgekey="486"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="379">
+						<edges>
+							<edge vertexkey="453" edgekey="487"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="380">
+						<edges>
+							<edge vertexkey="436" edgekey="488"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="381">
+						<edges>
+							<edge vertexkey="437" edgekey="489"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="382">
+						<edges>
+							<edge vertexkey="435" edgekey="490"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="383">
+						<edges>
+							<edge vertexkey="434" edgekey="491"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="384">
+						<edges>
+							<edge vertexkey="310" edgekey="395"/>
+							<edge vertexkey="456" edgekey="492"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="396">
+						<edges>
+							<edge vertexkey="454" edgekey="493"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="398">
+						<edges>
+							<edge vertexkey="455" edgekey="494"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="400">
+						<edges>
+							<edge vertexkey="52" edgekey="422"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="401">
+						<edges>
+							<edge vertexkey="69" edgekey="423"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="402">
+						<edges>
+							<edge vertexkey="75" edgekey="424"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="82" edgekey="425"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="404">
+						<edges>
+							<edge vertexkey="89" edgekey="426"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="405">
+						<edges>
+							<edge vertexkey="95" edgekey="427"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="406">
+						<edges>
+							<edge vertexkey="99" edgekey="428"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="407">
+						<edges>
+							<edge vertexkey="433" edgekey="495"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="FromToSplit" library="user" uid="13" editable="1" inline="1" blackbox="0">
+		<properties/>
+		<structure>
+			<children>
+				<component name="substring-before" library="core" uid="15" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+						<datapoint pos="1" key="3"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="414" lty="81" rbx="528" rby="135"/>
+				</component>
+				<component name="substring-after" library="core" uid="17" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+						<datapoint pos="1" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="424" rbx="528" rby="54"/>
+				</component>
+				<component name="constant" library="core" uid="14" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="288" lty="50" rbx="338" rby="67"/>
+					<data>
+						<constant value=" - " datatype="string"/>
+					</data>
+				</component>
+				<component name="to" library="core" uid="19" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="10"/>
+					</sources>
+					<view ltx="778" lty="127" rbx="817" rby="165"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="to"/>
+					</data>
+				</component>
+				<component name="from" library="core" uid="20" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="11"/>
+					</sources>
+					<view ltx="765" lty="16" rbx="817" rby="54"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="from"/>
+					</data>
+				</component>
+				<component name="string" library="core" uid="18" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view rbx="83" rby="38"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="3" edgekey="12"/>
+							<edge vertexkey="7" edgekey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="11" edgekey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="10" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="5" edgekey="16"/>
+							<edge vertexkey="1" edgekey="17"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="RangeSplitter" library="user" uid="58" editable="1" inline="1" blackbox="0">
+		<properties/>
+		<structure>
+			<children>
+				<component name="price" library="core" uid="68" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+					</sources>
+					<view ltx="1154" rbx="1207" rby="38"/>
+					<data>
+						<output datatype="string"/>
+						<parameter usageKind="output" name="price"/>
+					</data>
+				</component>
+				<component name="string" library="core" uid="67" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="19"/>
+					</targets>
+					<view rbx="83" rby="38"/>
+					<data>
+						<input datatype="string"/>
+						<parameter usageKind="input" name="string"/>
+					</data>
+				</component>
+				<component name="substring-after" library="core" uid="63" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="3"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="404" lty="82" rbx="508" rby="136"/>
+				</component>
+				<component name="substring-before" library="core" uid="65" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="16"/>
+						<datapoint pos="1" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="404" rbx="518" rby="54"/>
+				</component>
+				<component name="string-length" library="core" uid="66" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="543" lty="25" rbx="638" rby="63"/>
+				</component>
+				<component name="string-length" library="core" uid="62" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="9"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="543" lty="98" rbx="638" rby="136"/>
+				</component>
+				<component name="add" library="core" uid="100" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="43"/>
+						<datapoint pos="1" key="44"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="45"/>
+					</targets>
+					<view ltx="731" lty="64" rbx="809" rby="120"/>
+				</component>
+				<component name="constant" library="core" uid="64" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="260" lty="46" rbx="310" rby="63"/>
+					<data>
+						<constant value=" - " datatype="string"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="103" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="42"/>
+					</targets>
+					<view ltx="814" lty="149" rbx="852" rby="166"/>
+					<data>
+						<constant value="2" datatype="decimal"/>
+					</data>
+				</component>
+				<component name="divide" library="core" uid="102" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="46"/>
+						<datapoint pos="1" key="47"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="48"/>
+					</targets>
+					<view ltx="912" lty="66" rbx="990" rby="120"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="3" edgekey="49"/>
+							<edge vertexkey="2" edgekey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="5" edgekey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="44" edgekey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="9" edgekey="53"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="43" edgekey="54"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="18" edgekey="55"/>
+							<edge vertexkey="16" edgekey="56"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="42">
+						<edges>
+							<edge vertexkey="47" edgekey="57"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="45">
+						<edges>
+							<edge vertexkey="46" edgekey="58"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="48">
+						<edges>
+							<edge vertexkey="20" edgekey="59"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

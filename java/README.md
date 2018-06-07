@@ -21,7 +21,7 @@ incorporate available user review information for the corresponding locations. T
 we will exploit the same data sources and extend the implemented web scrapers to obtain additional review information. 
 In the subsequent Section we briefly investigate the tasks for data translation. The Section afterwards introduces the strategies applied 
 for integrating the various datasets resolve co-referent locations. Finally in the last Section we present insights and strategies for fusing the identified co-referent entities in the previous 
-phase.
+phase. The main steps described in the following are implemented using the Web Data Integration Framework [WInte.r](https://github.com/olehmberg/winter).
 
 # 1. Data Translation
 
